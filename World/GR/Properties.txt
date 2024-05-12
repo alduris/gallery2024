@@ -1,2 +1,9 @@
 
-Subregion: Community Gallery Region 2
+Subregion: Bridge
+Subregion: Suspended
+Subregion: Crypt
+Subregion: Growth
+Subregion: Shrouded
+Subregion: Monolith
+Subregion: Respite
+Subregion: Diseased
