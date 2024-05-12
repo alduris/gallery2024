@@ -1,0 +1,10 @@
+Template: NONE
+CeilingDrips: 0.02053899
+Clouds: 0
+Grime: 0.1469315
+Palette: 12
+EffectColorA: 18
+EffectColorB: 4
+Effects: SkyBloom-0-20-20, LightBurn-0-190.0781-149.525, Bloom-0-268.3781-39.28854, Fog-0.1416099-325.3344-114.7427, 
+PlacedObjects: CustomEntranceSymbol><1319.533><279.0643><17.32051~-10~ShortcutDots~0, SpinningFan><825.2269><284.4978><100~50~0.6~0.3~0.3, 
+FadePalette: 13, 0.2344092, 0.234409

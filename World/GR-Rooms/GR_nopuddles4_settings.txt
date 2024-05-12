@@ -1,0 +1,20 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0.6521739
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0.5
+WaveLength: 1
+WaveAmplitude: 0.00261449
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2173913
+Grime: 0.2934783
+RandomItemDensity: 0.6521739
+RandomItemSpearChance: 0.4826086
+Palette: -74
+EffectColorA: 5
+EffectColorB: 6
+Effects: SkyBloom-0.75-8.059372-164.4, DayNight-1-4.636475-112.3555, AboveCloudsView-0.173913-263.1937-162.6889, HeatWave-0.1413043-8.193756-9.799999, Flies-0.326087-7.193741-60.8, Ant-0.3369565-262.3479-111.6444, Beetle-0.4782609-262.3281-10.75556, TinyDragonFly-0.3043478-264.0594-59.62222, 
+PlacedObjects: DangleFruit><256.4221><241.6018><-274.9583~-174.5111~2~3, DangleFruit><209.4591><262.8042><24.47501~-111.6667~2~3, DangleFruit><1007.168><170.3914><-1034.203~52.79533~2~3, Mushroom><425.4698><100.1977><-441.5646~-111.4222~2~3, Mushroom><688.6609><59.13114><-450.0167~14.82223~2~3, Mushroom><965.9297><62.81275><-985.8334~81.55555~2~3, SeedCob><518.9164><133.8891><-291.4~89.46667~7~10, DeadSeedCob><973.3969><115.1358><, LightSource><1243.137><114.2195><1~EffectColor2~9.249023~138.4~-154.1886~-123.1752~0~0~None~0~0, LightSource><612.5472><760.8188><0.2808085~Environment~734.2251~-488.0889~-562.5656~-354.2864~1~1~None~0~0, NeedleEgg><1084.248><156.387><-837.3865~-169.2444~4~9, 
+AmbientSounds: OMNI><AM_ENV-NatWind.ogg><547.8422><46.96732><0.4226678><1, OMNI><AM_ENV-LushNight.ogg><364.0178><45.71165><0.2757363><1, OMNI><AM_ENV-Forest.ogg><181.5885><48.07309><0.5077329><0.8051228, 

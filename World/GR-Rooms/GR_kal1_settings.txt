@@ -1,0 +1,12 @@
+Template: NONE
+CeilingDrips: 0.7065217
+WaveSpeed: 0.7065217
+WaveLength: 0.6739131
+WaveAmplitude: 0.1195652
+SecondWaveLength: 0.5688404
+SecondWaveAmplitude: 0.3695652
+Palette: 14
+EffectColorA: 7
+EffectColorB: 13
+PlacedObjects: FirecrackerPlant><392.1532><523.575><3~-27~2~3, FirecrackerPlant><417.3033><533.214><-22~-35~2~3, Vine><204.405><212.8764><316~135, Vine><773.2434><354.8001><462~-100, Vine><459.6592><345.871><497~9, Vine><511.8711><346.9092><-144~-33, FirecrackerPlant><1158.911><499.3207><0~0~2~3, Vine><880.1122><353.1051><195~-33, 
+FadePalette: 1, 0.4456522

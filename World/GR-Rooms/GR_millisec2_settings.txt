@@ -1,0 +1,17 @@
+Template: NONE
+CeilingDrips: 1
+WaveSpeed: 0.7826087
+WaveLength: 0.5434783
+WaveAmplitude: 0.1086956
+SecondWaveLength: 0
+SecondWaveAmplitude: 0.4347826
+Clouds: 1
+Grime: 1
+WaterReflectionAlpha: 1
+Palette: 27
+EffectColorA: 18
+EffectColorB: 5
+Effects: Darkness-0.6521739-20-20, GlowingSwimmers-1-297-18, Lightning-1-373-74, ExtraLoudThunder-1-107-138, HeavyRain-0.04347826-23-69, Contrast-0.1521739-30-30, 
+PlacedObjects: ColouredLightSource><394.157><164.329><-348~45~FF0000~436^60~1~True~0~1~0.5~Always~0~100, ColouredLightSource><568.4647><208.8197><100~50~FF0000~436^60~1~True~0~1~0.5~Always~0~100, ColouredLightSource><449.0635><264.0596><-348~45~FF0000~436^60~1~True~0~0.5102115~0.5~Always~0~100, SteamPipe><445.3069><267.4474><-134~480, LightBeam><-201.3974><752.4323><-11~869~1361~871~1365~0~265.3398~-209.3443~0.07391291~0.4570137~0~1~None~0~0, LightSource><439.3383><1615.115><0.3979711~Environment~944~-429~-22~-434.3975~1~0~None~0~0, CustomDecal><202.4349><1040.316><8~562~551~567~527~-2~-70~97~0~0.389868~1~blackrust1~1~1~1~1~1~1~1~1, 
+AmbientSounds: OMNI><AM_RAIN-Rumbles.ogg><831.2734><562.1986><0.7065217><1, OMNI><AM_RAIN-RollingThunder.ogg><839.9359><459.6763><0.5><1, SPOT><AM_WIN-StrongWnd2.ogg><750.6204><508.5903><0.8043478><1><470.1487><1579.877><-735.3553><-81.35535><0><0.1, 
+FadePalette: 27, 0.5108696, 0.5108696

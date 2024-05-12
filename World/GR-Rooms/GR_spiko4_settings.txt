@@ -1,0 +1,9 @@
+Template: NONE
+Grime: 0
+Palette: 18
+EffectColorA: 16
+EffectColorB: 12
+Effects: ZeroG-0.75-20-20, Lightning-0.5108696-30-30, 
+PlacedObjects: SnowSource><506.1994><386.4847><Radial~-11~125~50~86.60254~1~0, SnowSource><952.8864><413.8963><Radial~-20~161~2~276.6025~1~0, LightSource><481.0508><399.3066><1~EffectColor1~-17~250~50~86.60254~0~0~None~0~0, LightSource><934.1059><425.6387><1~EffectColor1~-3~243~34~225.6025~0~0~None~0~0, FreeformDecalOrSprite><645.0688><620.8346><-544.0001~-99~0;0^148;2^149;111^1;113~eye~1~Hologram~Foreground~233~True~4B1C77, LightSource><721.655><667.6314><1~EffectColor1~59~382~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-SubTerr.ogg><747.4222><443.6842><0.5><1, OMNI><AM_IND-DeepHum.ogg><659.9196><548.856><0.5><1, OMNI><AM_IND-Fabrik01.ogg><740.7529><248.3><0.5><1, 
+FadePalette: 25, 0.8478261

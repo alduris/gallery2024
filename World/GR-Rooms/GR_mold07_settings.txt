@@ -1,0 +1,11 @@
+Template: NONE
+Clouds: 0.8913044
+Grime: 0.1086956
+Palette: 11
+EffectColorA: 0
+EffectColorB: 5
+Effects: SkyBloom-0.7717391-20-20, CorruptionSpores-0-30-87, ZeroGSpecks-0-262-25, FairyParticles-0-318-120, 
+PlacedObjects: Mushroom><212.8154><336.577><56~-446~2~3, Mushroom><276.8218><140.4092><-29~-255~2~3, Mushroom><570.1942><351.5478><-296~-476~2~3, Mushroom><310.3038><161.789><-43~-265~2~3, Mushroom><242.8398><334.1302><-70~-451~2~3, Mushroom><545.7498><345.45><-280~-397~2~3, WholeScreenSpawner><489.8245><136.9041><296~22.00002~3^381~20~10~80~0~80~0~500~400~1~True~82.17391~0.3~0~False, ParticleVisualCustomizer><89.70504><264.3051><-215~23~B1DEC6~000000~B1DEC6~000000~1069^453~Midground~spores~False~1~0~112.6087~108.6956~37.39133~0~Basic~1~0.5869565, Mushroom><616.6125><346.8547><-181~83~2~3, Mushroom><590.5778><350.8984><-161~6~2~3, Mushroom><331.7199><193.8023><0~0~2~3, 
+AmbientSounds: OMNI><am_env-lightwind.ogg><754.4214><431.6031><0.5869565><1, OMNI><am_env-lushnight.ogg><670.0627><369.3101><0.2934783><0.9413043, OMNI><so_sfx-alienscythe.ogg><942.4369><494.5713><0.6413044><0.4130435, OMNI><so_sfx-blackwidow2.ogg><297.4945><505.5501><0.5652174><0.55, 
+FadePalette: 37, 0.8369565
+MorePalette0: 9, 0.423913

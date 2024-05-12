@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Grime: 0
+Palette: 2
+EffectColorA: 15
+Effects: AboveCloudsView-0.10681-20-20, BkgOnlyLightning-1-22.52969-83.35938, ExtraLoudThunder-1-24.66406-138.8531, 
+PlacedObjects: DangleFruit><247.506><445.1726><0~0~2~3, DangleFruit><298.0509><416.8154><0~0~2~3, DangleFruit><323.0463><424.1816><0~0~2~3, DangleFruit><353.2576><444.6498><0~0~2~3, KarmaFlower><679.9734><322.8152><0~0~5~7, 
+AmbientSounds: OMNI><AM_IND-Welder.ogg><721.3024><368.5764><0.3040082><1, 
+FadePalette: 10, 0.8583898
+WetTerrain: OFF

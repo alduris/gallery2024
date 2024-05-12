@@ -1,0 +1,12 @@
+Template: NONE
+WaveSpeed: 0.5878339
+WaveLength: 1
+WaveAmplitude: 1
+SecondWaveLength: 0.1557969
+SecondWaveAmplitude: 0
+Grime: 0
+Palette: 8
+Effects: WaterViscosity-0-20-20, LightRain-0.5108696-261-77, Fog-1-281-17, 
+PlacedObjects: JellyFish><493.1127><141.9152><321~125~2~3, JellyFish><132.1528><158.879><0~0~2~3, JellyFish><11.9585><107.5544><-14~209~2~3, ClimbableRope><669.5699><716.4131><-3^-554, ClimbableRope><697.6056><715.3883><11^-460, 
+AmbientSounds: OMNI><am_wat-sea01.ogg><739.8029><529.7161><0.5><1, OMNI><AM_ENV-LightWind.ogg><711.0753><410.4353><0.1521739><1, 
+FadePalette: 49, 0.3478261

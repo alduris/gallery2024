@@ -1,0 +1,9 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Grime: 0
+Palette: 2
+EffectColorA: 15
+EffectColorB: 6
+Effects: AboveCloudsView-0.10681-20-20, 
+AmbientSounds: OMNI><AM_ENV-NatWind.ogg><701.4508><492.7878><1><1, OMNI><AM_WIN-HowlingWnd.ogg><702.7762><567.2203><1><1, 

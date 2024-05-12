@@ -1,0 +1,20 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04999999
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 1
+RandomItemDensity: 0.7282609
+RandomItemSpearChance: 0.3086956
+Palette: 42
+EffectColorA: 21
+EffectColorB: 18
+Effects: Fog-1-19-76, HeatWave-0.1847826-20-20, Dustpuffs-1-279-23, 
+PlacedObjects: KarmaFlower><1950.608><366.6412><0~0~5~7, DangleFruit><526.82><523.0872><533.0001~-551~2~3, DangleFruit><545.4095><490.6207><-242.9999~-519~2~3, DangleFruit><477.0656><601.9226><77~-630~2~3, DangleFruit><429.686><588.9264><377~-617~2~3, HangingPearls><486.6443><641.6698><, HangingPearls><507.9423><582.6949><, HangingPearls><4983.951><590.9439><, HangingPearls><5019.564><592.6761><, HangingPearls><5071.14><629.6671><, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><9.546509><259.0555><0.5217391><1, OMNI><AM_IND-12thFloor.ogg><8.121338><402.9031><0.6956522><1.097826, OMNI><AM_WIN-HowlingWnd.ogg><9.807434><331.3085><0.5108696><1, SPOT><AM_ENV-LightWind.ogg><740.1804><515.5864><1><1><530.1804><42.58643><44.64465><384.6447><0><0.1108697, 
+FadePalette: 48, 0.6086956, 0.6086956, 0.6086956, 0.6086956, 0.6086956
+BackgroundOffset: 326.0869,108.6956
+BackgroundType: Rf_Default

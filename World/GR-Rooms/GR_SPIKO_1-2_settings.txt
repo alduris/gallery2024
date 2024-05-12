@@ -1,0 +1,23 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0.5
+RainIntensity: 1
+RumbleIntensity: 1
+WaveSpeed: 0.75
+WaveLength: 0.5
+WaveAmplitude: 0
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0
+Grime: 0
+BkgDroneVolume: 0.2869565
+BkgDroneNoThreatVolume: 1
+RandomItemDensity: 0.5
+RandomItemSpearChance: 0.2
+WaterReflectionAlpha: 1
+Palette: 28
+EffectColorA: 13
+EffectColorB: 0
+Effects: RoofTopView-0.1521739-20-20, Advertisements-0.5-74-97, DayNight-1-30-30, 
+PlacedObjects: SuperStructureFuses><372.821><302.9108><395~199, HangingPearls><252.882><696.1503><, LanternOnStick><329.828><152.6479><-43~-71, LanternOnStick><775.8544><180.8294><58~-129, LightBeam><266.7469><335.45><-21~396~797~437~372~171~-349~-2~0.8891303~0~0~0~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><751.1393><523.5834><0.326087><0.6673913, OMNI><AM_ENV-CityTone.ogg><758.6454><518.8295><0.5><1, OMNI><AM_ENV-Forest.ogg><759.3686><506.411><0.5><1, 

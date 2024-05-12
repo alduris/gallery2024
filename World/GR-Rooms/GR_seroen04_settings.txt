@@ -1,0 +1,10 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Grime: 0
+Palette: 2
+EffectColorA: 15
+Effects: AboveCloudsView-0.10681-20-20, BkgOnlyLightning-1-22.52969-83.35938, ExtraLoudThunder-1-24.66406-138.8531, 
+PlacedObjects: CosmeticSlimeMold><608.2755><361.4698><391.6578~5.553894, CosmeticSlimeMold><303.5164><425.425><771.043~-124.1094, CosmeticSlimeMold><907.6621><301.2285><-490.3726~174.7031, SlimeMold><607.1395><370.1199><0~0~2~3, SlimeMold><631.8694><361.5472><0~0~2~3, SlimeMold><372.6443><366.5076><0~0~2~3, SlimeMold><441.3802><408.0441><0~0~2~3, CosmeticSlimeMold><755.8745><286.989><3.201538~262.7462, SlimeMold><750.8482><285.1087><0~0~2~3, SlimeMold><774.683><282.8535><0~0~2~3, LanternOnStick><338.7397><427.7935><6.403107~34.90155, LanternOnStick><803.8278><420.9658><2.667969~44.50623, LanternOnStick><736.0737><431.1815><19.74304~43.43903, LanternOnStick><642.6216><411.5223><8.003906~58.91327, 
+FadePalette: 10, 0.8583898
+WetTerrain: OFF

@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Grime: 0
+Palette: 2
+EffectColorA: 15
+Effects: AboveCloudsView-0.10681-20-20, BkgOnlyLightning-1-22.52969-83.35938, ExtraLoudThunder-1-24.66406-138.8531, 
+PlacedObjects: CosmeticSlimeMold><755.5997><393.436><0~51.44299, SlimeMold><749.7378><363.3756><0~0~2~3, SlimeMold><734.1265><363.1286><0~0~2~3, 
+AmbientSounds: OMNI><AM_IND-Welder.ogg><721.3024><368.5764><0.3040082><1, 
+FadePalette: 10, 0.8583898
+WetTerrain: OFF

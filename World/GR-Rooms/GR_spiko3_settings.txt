@@ -1,0 +1,9 @@
+Template: NONE
+Grime: 0
+Palette: 5114
+EffectColorA: 7
+EffectColorB: 7
+Effects: AboveCloudsView-0.2173913-20-20, SkyBloom-1-173-79, Flies-0.5-250-37, 
+PlacedObjects: LightBeam><789.4482><636.9735><-706~-14~-867~-558~-94~-692~306~237~0.4~0~0~1~None~0~0, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><719.9148><564.3633><0.5><1, OMNI><AM_ENV-Forest.ogg><726.3545><531.8628><0.5><1, OMNI><AM_ENV-LightWind.ogg><732.62><520.91><0.5><1, 
+FadePalette: 8, 0.3586957
