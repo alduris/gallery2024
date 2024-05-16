@@ -101,7 +101,6 @@ GR_Nora-3a: -2973><10.5><0><-70><0><Shrouded
 GR_NOTGOODGAMER-2b: 6996><427.5><0><-394><0><Growth
 GR_NOTGOODGAMER-3b: 8274><-79.5><40><-110><0><Monolith
 GR_NOTGOODGAMER-4b: 2601><-627><80><-156><0><Diseased
-GR_OCTO-1a: -7917><856.5><0><-70><0><Bridge
 GR_Oscarriaq-1a: -8181><850.5><0><-70><0><Bridge
 GR_Oscarriaq-1b: 4869><958.5><40><-110><0><Suspended
 GR_Oscarriaq-2b: 7593><463.5><80><-150><0><Growth
