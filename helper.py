@@ -81,7 +81,6 @@ def mv(fr, to):
 # Main loop
 page = 1
 while True:
-	# cls()
 	print("PAGE " + str(page) + " | " + message)
 	print("=" * COLS)
 	order = sorted(rooms.keys(), key=str.casefold)
@@ -116,6 +115,7 @@ while True:
 	print("=" * COLS)
 	
 	inp = input("Action: ")
+	cls()
 	
 	if inp.startswith("mv"):
 		split = inp.split(" ")
