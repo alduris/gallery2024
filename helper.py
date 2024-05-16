@@ -94,7 +94,8 @@ while True:
 	colwidth = int(COLS / numcols)
 	for item in order:
 		if i + maxlen > COLS:
-			print()
+			if k == page:
+				print()
 			i = 0
 			j += 1
 			if j > ROWS - 5:
