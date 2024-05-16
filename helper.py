@@ -18,8 +18,11 @@ with open("World/GR/world_GR.txt", "r", encoding="utf8") as f:
 			b = False
 		elif b:
 			parts = line.strip().split(" : ")
+			if len(parts) <= 1: continue
 			if parts[0] in rooms:
 				rooms[parts[0]]["connections"] = parts[1]
+			else:
+				rooms[parts[0]] = {"connections": parts[1], "subregion": "N/A"}
 
 # Utility
 COLS = os.get_terminal_size().columns - 2
@@ -64,6 +67,7 @@ def mv(fr, to):
 	with open("World/GR/map_GR.txt", "w", encoding="utf8") as f:
 		for key in order:
 			r = rooms[key]
+			if "data" not in r: continue
 			f.write(key + ": " + "><".join(r["data"]) + "><" + r["subregion"])
 			f.write("\n")
 
