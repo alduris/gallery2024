@@ -30,7 +30,7 @@ GR_Coolkid-1b: 1956><982.5><0><-70><0><Suspended
 GR_DEDNIKO-1b: 2325><966><0><-240><0><Suspended
 GR_DEDNIKO-2a: -8424><351><0><-168><0><Crypt
 GR_DEDNIKO-3b: 2284.5><78><0><-372><0><Monolith
-GR_Deerstop_4a: -1200><-610.5><0><-70><0><Respite
+GR_Deerstop-4a: -1200><-610.5><0><-70><0><Respite
 GR_DepressionBomb-1a: -3585><916.5><0><-70><0><Bridge
 GR_Detrax-1b: 2761.5><963><0><-84><0><Suspended
 GR_Detrax-2a: -1677><549><0><-76><0><Crypt
