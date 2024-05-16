@@ -47,11 +47,12 @@ def mv(fr, to):
 	
 	# Rename files
 	subprocess.Popen(["git", "mv", os.path.join(curr_dir, pathf + ".txt"), os.path.join(curr_dir, patht + ".txt")], cwd=curr_dir).wait()
-	test = os.path.isfile(pathf + "_settings.txt")
-	subprocess.Popen(["git", "mv", os.path.join(curr_dir, "World/GR-Rooms/" + (fr if test else fr.lower()) + "_settings.txt"), os.path.join(curr_dir, "World/GR-Rooms/" + to.lower() + "_settings.txt")], cwd=curr_dir).wait()
+	subprocess.Popen(["git", "mv", os.path.realpath(os.path.join(curr_dir, pathf + "_settings.txt")), os.path.join(curr_dir, "World/GR-Rooms/" + to.lower() + "_settings.txt")], cwd=curr_dir).wait()
 	i = 1
 	while os.path.isfile(pathf + "_" + str(i) + ".png"):
-		subprocess.Popen(["git", "mv", os.path.join(curr_dir, pathf + "_" + str(i) + ".png"), os.path.join(curr_dir, to + "_" + str(i) + ".png")], cwd=curr_dir).wait()
+		subprocess.Popen(["git", "mv", os.path.join(curr_dir, pathf + "_" + str(i) + ".png"), os.path.join(curr_dir, patht + "_" + str(i) + ".png")], cwd=curr_dir).wait()
+		if os.path.isfile(pathf + "_" + str(i) + "_bkg.png"):
+			subprocess.Popen(["git", "mv", os.path.join(curr_dir, pathf + "_" + str(i) + "_bkg.png"), os.path.join(curr_dir, patht + "_" + str(i) + "_bkg.png")], cwd=curr_dir).wait()
 		i += 1
 	
 	# Move data internally
