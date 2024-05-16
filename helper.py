@@ -62,14 +62,10 @@ def mv(fr, to):
 	# Save
 	order = sorted(rooms.keys(), key=str.casefold)
 	with open("World/GR/map_GR.txt", "w", encoding="utf8") as f:
-		b = False
 		for key in order:
 			r = rooms[key]
 			f.write(key + ": " + "><".join(r["data"]) + "><" + r["subregion"])
-			if b:
-				f.write("\n")
-			else:
-				b = True
+			f.write("\n")
 
 	with open("World/GR/world_GR.txt", "w", encoding="utf8") as f:
 		f.write("ROOMS\n\n")
