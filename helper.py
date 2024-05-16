@@ -120,11 +120,11 @@ while True:
 	cls()
 	
 	if inp.startswith("mv"):
+		message = DEFAULT_MESSAGE
 		split = inp.split(" ")
 		if len(split) != 3:
 			message = "Invalid usage of mv! Syntax: mv [from] [to]"
 		mv(split[1], split[2])
-		message = DEFAULT_MESSAGE
 	elif inp == "exit":
 		exit()
 	elif inp == "next" or inp == "n":
