@@ -69,7 +69,7 @@ palette 560: gr_0rchiddisease
 palette 573: gr_worldspire
 palette 616: GR_Tronsx04 - MISSING
 palette 1666: gr_dododecalogist
-palette 4472: gr_dogcat01 - MISSING
+palette 4472: gr_dogcat01
 palette 5114: gr_spiko03
 palette 8070: GR_ZarquonB
 palette 8071: GR_ZarquonB
