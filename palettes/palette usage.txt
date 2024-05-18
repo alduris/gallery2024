@@ -68,6 +68,7 @@ palette 557: gr_0rchidcrypt
 palette 560: gr_0rchiddisease
 palette 573: gr_worldspire
 palette 616: GR_Tronsx04 - MISSING
+palette 725: GR_Isbjorn52-3a
 palette 1666: gr_dododecalogist
 palette 4472: gr_dogcat01
 palette 5114: gr_spiko03
