@@ -1,0 +1,8 @@
+Template: NONE
+Clouds: 0.173913
+Grime: 0.3043478
+Palette: 2
+Effects: SkyBloom-0.7826087-20-20, HeatWave-0.25-32-94, Moth-0.3586957-38-136, Brightness-0.0326087-641-10, Hue-0.9782609-298-67, 
+PlacedObjects: LightSource><496.5504><681.9435><0.6086956~Environment~631~-777~40~-100.3975~1~1~None~0~0, DeadSeedCob><947.4314><476.9159><, DeadSeedCob><1066.144><504.4197><, DeadSeedCob><1112.301><439.5222><, ReliableSpear><361.5686><187.9379><, 
+FadePalette: 53, 0.3369565
+MorePalette0: 21, 0.1086956

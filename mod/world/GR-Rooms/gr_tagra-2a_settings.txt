@@ -1,0 +1,14 @@
+Template: NONE
+WaveSpeed: 0.5775025
+WaveLength: 0.9612487
+WaveAmplitude: 3.864605E-05
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2717391
+Grime: 0.3804348
+WaterReflectionAlpha: 0
+Palette: 30
+Effects: Desaturation-0.1304348-20-68, Hue-0.1847826-19-131, Contrast-0.0326087-16-8, SkyBloom-1-589-404, Bloom-0.1304348-772-365, Lightning-0-528-406, HeatWave-0.01086957-278-100, 
+PlacedObjects: LightSource><1109.15><359.3827><1~Environment~-740~-195~50~86.60254~1~0~None~0~0, 
+AmbientSounds: OMNI><AM_IND-12thFloor.ogg><104.5732><370.6861><0.75><0.8826087, OMNI><AM_ENV-CityTone.ogg><113.3531><470.9214><0.75><1, OMNI><AM_RAIN-QuietThunder.ogg><94.07526><281.3147><0.7391304><1, SPOT><AM_WIN-StrongWnd2.ogg><778.3157><442.4222><1><1><1115.316><306.4222><-452.3553><-11.35535><0><0.2739132, 
+FadePalette: 48, 0.4565217

@@ -1,0 +1,78 @@
+palette -74: gr_nopuddles4
+palette -73: gr_nopuddles3
+palette 0: gr_incogniko_crypt, GR_snoodle01, gr_tcan1
+palette 1: GR_Bemo02, gr_dogcat02, gr_dogcat03, gr_incogniko02, gr_kal1, gr_mold04, gr_rexnecromachina13, gr_starlightreactor3, gr_yippee
+palette 2: gr_catatu_bridge, gr_ffl4, gr_inspectnerd4, gr_lkelly1, gr_mold03, gr_ren01, gr_seroen01, gr_seroen02, gr_seroen03, gr_seroen04, GR_snoodle01, gr_tapok2, gr_tapok7, gr_vprchm01, gr_wex02
+palette 3: gr_ffl1, gr_incogniko11, GR_StoatykinsCryptGrowth, gr_vprchm01, gr_vprchm_02
+palette 4: GR_Alduris02, gr_incogniko02, gr_mold08, gr_rexnecromachina01, gr_rexnecromachina03, gr_rexnecromachina04, gr_stoatykins, GR_Tronsx03, gr_vprchm_02
+palette 5: gr_chipped01, GR_lkelly2, gr_mold03
+palette 6: gr_incogniko11, gr_lkelly1, gr_nekovo03, gr_tapok1, gr_tapok5
+palette 7: gr_alduris03, gr_dedniko03, GR_Iswto[JN27]04_Settings, gr_klum04, GR_snoodle02
+palette 8: GR_Bemo01, gr_bimsyth02, gr_inspectnerd5, gr_klum04, gr_meta01, gr_nekovo02, gr_nopuddles3, gr_rexnecromachina01, gr_rexnecromachina03, gr_spiko03, GR_StoatykinsCryptGrowth, gr_stoatykins, gr_tyrix02
+palette 9: gr_dedniko02, gr_inspectnerd1, gr_nopuddles2, gr_notgoodgamer2, GR_Tronsx02
+palette 10: gr_0rchidcrypt, gr_0rchidgrowth, GR_ATOM_01, gr_ax3lotI02, gr_ax3loti4, gr_dogcat01, gr_dogcat02, gr_incogniko_crypt, gr_inspectnerd1, gr_inspectnerd8, GR_Iswto[JN27]02_Settings, GR_Iswto[JN27]03_Settings, gr_izuna01, gr_kof01, gr_kof03, gr_nekovo03, gr_nora, gr_notgoodgamer2, gr_notgoodgamer3, gr_notgoodgamer4, gr_rexnecromachina13, gr_seroen03, GR_snoodle02, gr_tapok4, gr_tapok6, GR_Tronsx02, GR_Tronsx04
+palette 11: GR_DEDNIKO01, GR_Dednikosuspendedandbridge, gr_meta02, gr_mold05, gr_mold07, gr_rbor01, gr_yofish
+palette 12: GR_Alduris01, GR_Ax3lot01, gr_ax3loti4, gr_catatu_bridge, GR_Iswto[JN27]03_Settings, gr_mold08, gr_tcan2, gr_tyrix02, gr_wex03
+palette 13: GR_Ax3lot01, gr_dedniko03, gr_klum03, GR_lkelly2, gr_millisec, gr_quivel01, gr_quivel02, gr_quivel03, GR_Tronsx03, GR_WYNNE1
+palette 14: GR_Bemo02, gr_izuna01, gr_kal1, gr_rbor04, gr_rexnecromachina04, gr_tcan1
+palette 15: gr_ffl1, gr_ffl4, gr_mold04
+palette 16: GR_Bemo01, gr_bootleg02
+palette 17: gr02, gr_bootleg02
+palette 18: gr_brownie04_2, gr_brownie04, gr_incogniko01, gr_spiko04, gr_tapok3
+palette 19: gr_bootleg01, gr_millisec1
+palette 20: GR_Alduris02
+palette 22: gr_bootleg01, gr_chipped01, gr_dedniko02, gr_incogniko01, gr_inspectnerd3, GR_IZUNA03, gr_millisec1, gr_millisec, gr_nekovo02, gr_nopuddles2, gr_rbor04, gr_spiko07
+palette 23: gr02, gr_spiko05
+palette 24: gr_meta01, gr_rbor02, GR_Tat011_Settings
+palette 25: gr_spiko04
+palette 26: gr_starlightreactor3
+palette 27: GR_alexavailable, gr_inspectnerd8, gr_meta02, gr_millisec2, gr_millisec2, gr_tapok6
+palette 28: GR_SPIKO_11
+palette 29: gr_0rchidsusp, GR_DepressionBomb01, gr_nekovo01, gr_parageist01, gr_quivel01, gr_wex02, GR_WYNNE1
+palette 30: gr_ffl2, gr_notgoodgamer4, GR_Tagra2
+palette 31: GR_alexavailable, GR_ATOM_01, gr_spiko06
+palette 32: gr_quivel04, gr_worldspire
+palette 33: gr_ffl3, gr_klum02, gr_quivel02, gr_rbor02, gr_spiko06, gr_traincarthover01, GR_Tronsx01
+palette 34: gr_bootleg03, gr_inspectnerd3
+palette 35: gr_alduris03, GR_DEDNIKO01, GR_Dednikosuspendedandbridge, gr_rbor01
+palette 36: gr_0rchiddisease
+palette 37: GR_DepressionBomb01, gr_mold05, gr_mold07, GR_SPIKO_1, gr_tagra1
+palette 38: gr_inspectnerd6, GR_Tronsx01
+palette 39: gr_inspectnerd2, gr_inspectnerd6
+palette 40: gr_brownie04_2, gr_brownie04, GR_Iswto[JN27]02_Settings, gr_nekovo01, GR_SPIKO_1, gr_tapok2, gr_wex03
+palette 41: gr_quivel03, gr_wex01
+palette 42: GR_Alduris04, gr_fatal01, gr_ffl2, gr_nopuddles1, gr_ren01, gr_wex01
+palette 45: gr_bootleg03
+palette 47: GR_Iswto[JN27]01_Settings
+palette 48: gr_ax3lotI02, gr_nopuddles1, gr_tagra1, GR_Tagra2, gr_tapok3
+palette 49: GR_Alduris04, gr_inspectnerd5
+palette 51: gr_0rchidsusp, GR_Alduris01, gr_klum03
+palette 53: gr_inspectnerd4, gr_klum02, gr_kof03, gr_nekovo04, gr_yofish
+palette 54: gr_inspectnerd7, gr_yippee
+palette 55: gr_mold02
+palette 60: gr_tcan2
+palette 68: gr_dododecalogist, gr_notgoodgamer3, gr_quivel04
+palette 72: gr_spiko07
+palette 75: gr_mold02
+palette 145: GR_IZUNA03
+palette 420: GR_ZarquonA
+palette 421: GR_ZarquonA
+palette 440: gr_tapok5
+palette 450: gr_tapok4, gr_tapok8
+palette 452: gr_tapok1
+palette 454: gr_tapok7
+palette 455: gr_tapok8
+palette 485: gr_fatal01
+palette 556: gr_0rchidgrowth
+palette 557: gr_0rchidcrypt
+palette 560: gr_0rchiddisease
+palette 573: gr_worldspire
+palette 616: GR_Tronsx04 - MISSING
+palette 725: GR_Isbjorn52-3a
+palette 1666: gr_dododecalogist
+palette 4472: gr_dogcat01
+palette 5114: gr_spiko03
+palette 8070: GR_ZarquonB
+palette 8071: GR_ZarquonB
+palette 60106: gr_rose02 - MISSING
+palette 80103: gr_rose01 - MISSING

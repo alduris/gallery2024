@@ -1,0 +1,13 @@
+Template: NONE
+Clouds: 0.4021739
+Grime: 0
+Palette: 29
+EffectColorB: 7
+Effects: FairyParticles-1-357-72, ZeroG-0.6304348-257-127, Contrast-0.1304348-30-30, Brightness-0.06521739-262-12, LightBurn-0.4565217-20-20, Dustpuffs-0.1304348-6-125, AboveCloudsView-1-33-72, FireFlies-0.3152174-39-91, 
+PlacedObjects: CellDistortion><314.1814><285.4158><1306~279~-20~-178.3975~0~0.9130435~0.1630435~0.04347826, FairyParticleSettings><37.3573><210.8901><607~88.66025~0~1~1~0~4.307824~4.619915~60~500~40~100~5~30~0~360~0.2065217~0.173913~0.25~0.3586957~0.1521739~0.1195652~1~0.2065217~8.211748~Star_Thick~SIN_IO~SIN_IO~13.04348~0.07608695~1.73913, LightSource><87.68225><720.0825><0.04347826~Environment~998~-694~-115~-599.3975~1~1~None~0~0, LightBeam><-191.3295><-40.39531><-1~733~176~752~1342~551~51~228~0.1173912~0.7065217~0~1~None~0~0, ClimbablePole><301.283><443.0527><-55~28~-259.6795~-493~Black, ClimbablePole><507.6647><332.6135><39~-18~17.32051~-10~Black, ClimbablePole><195.5939><380.6766><-67~39~17.32051~-10~Black, ClimbablePole><446.1151><248.8364><76~-43~17.32051~-10~Black, LightSource><472.5711><-49.66055><0.1956522~Environment~-224~401~50~86.60254~1~1~None~0~0, LightSource><-163.5537><170.2115><0.1956522~Environment~257~357~79~158.6025~1~1~None~0~0, LightSource><815.7986><707.806><0.04347826~Environment~-586~-583~-572~-498.3975~1~1~None~0~0, LightSource><1079.404><69.62781><0.1956522~Environment~-294~148~-458~-89.39746~1~1~None~0~0, DandelionPatch><43.74933><545.8><0~84, DandelionPatch><779.7378><346.5504><2~78, DandelionPeach><126.8305><593.1063><214~-55~2~3, DandelionPeach><101.057><608.5527><143~-9~2~3, DandelionPeach><68.37701><596.5956><160~-178~2~3, DeadSeedCob><710.9496><473.261><, DeadSeedCob><771.5531><481.5353><, DangleFruit><335.8486><77.88074><0~0~2~3, DangleFruit><371.988><195.1996><0~0~2~3, DangleFruit><431.4432><153.9485><0~0~2~3, CustomDecal><-197.3749><-48.40601><-1~761~1358~762~1356~-2~218~49~0~1~0~cityred~0.2065217~0~0.2065217~0~0.2065217~0~0.2065217~0, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><741.4962><504.8><0.6739131><1, OMNI><Amends_WIN_Chimes.ogg><758.0161><565.9493><0.1304348><1, OMNI><AM_RAIN-QuietThunder.ogg><707.0548><305.3076><0.6195652><1, OMNI><SO_SFX-DataTones.ogg><712.0511><426.979><0.1195652><1, OMNI><SO_SFX-DeepStoneBass.ogg><696.6889><364.6842><0.5652174><1, OMNI><SO_SFX-GlassGhost.ogg><692.8972><314.3646><0.25><1, OMNI><SO_SFX-PulseWav.ogg><707.7445><175.5501><0.2608696><1, 
+FadePalette: 37, 0.2391304
+WetTerrain: OFF
+MorePalette0: 10, 0
+BackgroundOffset: 0,978.2606
+BackgroundType: AtC_Default_MSC

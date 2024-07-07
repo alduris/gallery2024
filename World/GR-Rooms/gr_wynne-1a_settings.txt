@@ -1,9 +1,0 @@
-Template: NONE
-Clouds: 0.01739966
-Grime: 0.1752037
-Palette: 29
-EffectColorA: 9
-EffectColorB: 9
-Effects: Bloom-0.5161939-20-20, 
-PlacedObjects: ColoredLightBeam><-157.6125><207.6865><0~532.5071~3405.909~528.2383~3387.233~10.13821~0~0~0.05780394~0.1275985~0~1~None~0~0~Environment~Environment~Environment~Environment~Environment~Environment, ColouredLightSource><555.6136><323.3167><-914.3617~-368.8711~FFFFF5~85.37497^-3.802338~0.6868034~True~0.5~0~0.5~Always~0~100, ColouredLightSource><393.9442><316.3184><-655.0352~-443.0406~FFFFF0~114.7226^-10.20547~0.5592054~True~0.5~0~0.5~Always~0~100, ColouredLightSource><1087.698><325.3198><100~50~FFFFEF~160.6117^-4.335968~0.6926037~True~0.5~0~0.5~Always~0~100, ColouredLightSource><2170.849><342.9781><-76.08594~-410.4915~FFFFF2~120.5922^-11.27267~0.6114044~True~0.5~0~0.5~Always~0~100, ColouredLightSource><2499.912><326.3><-615.5492~-153.8328~FFFFF5~143.0031^-5.936737~0.5592054~True~0.5~0~0.5~Always~0~100, SeedCob><0.8219757><579.2463><0~0~7~10, DeadSeedCob><-45.11691><531.5807><, FirecrackerPlant><2984.943><495.8433><0~0~2~3, FirecrackerPlant><3054.973><510.407><0~0~2~3, 
-FadePalette: 13, 0.6437923, 0.6495922, 0.6437925

@@ -1,0 +1,13 @@
+Template: NONE
+DangerType: Flood
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04716061
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Palette: 10
+EffectColorA: 12
+EffectColorB: 18
+Effects: BrokenZeroG-1-20-20, Fog-0.3804348-317-26, SilenceWater-0.25-316-88, CorruptionSpores-0.4130435-24-80, 
+PlacedObjects: Corruption><475.8937><931.908><11~171, Corruption><434.3378><1310.401><0~100, Corruption><869.8643><1282.164><0~100, CorruptionTube><573.7387><1009.199><-213~287, CorruptionTube><344.7747><918.919><471~392, Corruption><1412.79><1081.5><-8~172, Corruption><1764.841><819.2978><-159~3, CorruptionTube><1380.374><988.155><92~184, CorruptionTube><1724.728><786.8395><-353~426, Corruption><1137.198><402.1932><88~187, Corruption><1485.877><502.8428><76~-64, Corruption><1812.302><484.3753><0~100, CorruptionTube><1505.894><502.1111><336~-20, Corruption><224.7945><611.7156><-211~40, Corruption><770.9493><535.5153><56~144, Corruption><483.8058><425.5688><-133~37, CorruptionTube><260.2144><626.3032><173~-178, CorruptionTube><578.6791><460.8281><174~46, StuckDaddy><496.1937><501.6504><-19~98, Corruption><169.4809><185.8312><63~38, CorruptionTube><171.4691><174.8682><253~214, 
+FadePalette: 27, 0.3152174, 0.3152174, 0.3152174, 0.3152174

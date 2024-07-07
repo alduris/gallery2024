@@ -1,0 +1,19 @@
+Template: NONE
+CeilingDrips: 1
+WaveSpeed: 0.512423
+WaveLength: 0
+WaveAmplitude: 1.559253E-09
+SecondWaveLength: 0
+SecondWaveAmplitude: 0
+Clouds: 0.01086957
+Grime: 0.3804348
+RandomItemDensity: 0.2934783
+RandomItemSpearChance: 0.08043472
+WaterReflectionAlpha: 0
+Palette: 48
+EffectColorB: 12
+Effects: Hue-0.8913044-20-20, Contrast-0.09782609-411-103, LightRain-0.1521739-304-326, AboveCloudsView-1-318-15, 
+AmbientSounds: OMNI><AM_ENV-WinterHum.ogg><313.3037><499.2885><0.5543478><0.4326087, OMNI><SO_ENV-StrongWnd.ogg><138.4797><496.699><0.3695652><0.2173913, OMNI><AM_IND-12thFloor.ogg><225.0501><421.5564><0.2717391><0.4130435, 
+FadePalette: 37, 0.7173913
+BackgroundOffset: 0,978.2606
+BackgroundType: AtC_Default_MSC

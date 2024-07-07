@@ -1,0 +1,12 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+Grime: 1
+Palette: 1
+Effects: RoomWrap-1-20-20, AboveCloudsView-1-30-30, 
+PlacedObjects: CustomDecal><780.6608><355.571><30~795~470~802~464~-6~0~0~0~1~0~flyingeye~0.5~0~0.5~0~0.5~0~0.5~0, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>crimeslow<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>0<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>788.6924<tB>334.4415<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>1023.754<tB>1542.585<tA>handlePos<tB>-354.3553<tB>-241.3553, 
+BackgroundOffset: 0,900
+BackgroundType: atc_default_vanilla

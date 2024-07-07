@@ -1,0 +1,9 @@
+
+Subregion: Bridge
+Subregion: Suspended
+Subregion: Crypt
+Subregion: Growth
+Subregion: Shrouded
+Subregion: Monolith
+Subregion: Respite
+Subregion: Diseased

@@ -1,8 +1,0 @@
-Template: NONE
-Clouds: 0.5
-Palette: 27
-EffectColorB: 7
-Effects: LightRain-0.3586957-20-20, Wasp-0.326087-30-30, Flies-0.1413043-40-40, 
-PlacedObjects: PlacedWaterfall><661.6666><16.68176><100~50~0.3043531~1, DangleFruit><839.7175><410.8027><0~0~2~3, DangleFruit><108.699><367.0203><0~0~2~3, DangleFruit><134.6683><344.3581><0~0~2~3, 
-AmbientSounds: OMNI><AM_IND-12thFloor.ogg><723.6792><355.0888><0.25><1, OMNI><AM_ENV-WinterHum.ogg><735.3697><400.5983><0.1521739><1, OMNI><AM_WIN-HowlingWnd.ogg><774.5826><550.1821><0.2065217><1, OMNI><SO_WAT-TapWater.ogg><527.6862><452.6769><0.1086956><1, 
-FadePalette: 14, 0.3043478

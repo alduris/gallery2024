@@ -1,9 +1,0 @@
-Template: NONE
-Clouds: 0.8043478
-Grime: 0.08695652
-Palette: 10
-EffectColorB: 21
-Effects: FireFlies-0.4021739-20-20, BkgOnlyLightning-0.5-333-29, 
-PlacedObjects: ReliableSpear><647.5552><254.7045><, 
-AmbientSounds: OMNI><AM_ENV-CityTone.ogg><750.5283><564.052><0.3152174><1, OMNI><AM_ENV-NatWind.ogg><736.8222><491.5916><0.3152174><1, OMNI><AM_RAIN-QuietThunder.ogg><764.7065><329.6952><0.4456522><1, 
-FadePalette: 9, 0.1413043, 0.1521739

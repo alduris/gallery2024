@@ -1,0 +1,9 @@
+{
+	"id": "Community.Gallery2",
+	"name": "Community Gallery Region 2",
+	"authors": "Community"
+	"description": "Community",
+	"requirements": ["moreslugcats", "regionkit", "crs", "slugbase"],
+	"requirements_names": ["More Slugcats Expansion", "RegionKit", "Custom Regions Support", "Slugbase"],
+	"checksum_override_version": true
+}

@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Clouds: 1
+Grime: 0
+Palette: 2
+EffectColorA: 15
+EffectColorB: 6
+Effects: AboveCloudsView-0.1010104-20-20, RoomWrap-1-24.13046-87.09453, Dustpuffs-1-24.13049-143.6555, 
+AmbientSounds: OMNI><AM_ENV-NatWind.ogg><701.4508><492.7878><1><1, OMNI><AM_WIN-HowlingWnd.ogg><702.7762><567.2203><1><1, 
+FadePalette: 1, 0

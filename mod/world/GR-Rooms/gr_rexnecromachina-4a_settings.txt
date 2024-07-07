@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: Blizzard
+CeilingDrips: 0.6630435
+WaveSpeed: 0.7494313
+WaveLength: 0.8752844
+WaveAmplitude: 9.091754E-07
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Palette: 14
+EffectColorA: 2
+EffectColorB: 3
+Effects: Darkness-0.4347826-20-20, SunBlock-0.5760869-30-30, Advertisements-1-40-40, 
+PlacedObjects: SnowSource><693.8939><864.8592><Strip~713~-655~50~86.60254~1~1, LanternOnStick><588.4044><610.4724><-13~-142, LanternOnStick><732.4443><588.7663><-26~-122, LanternOnStick><562.0518><381.2775><24~-96, LanternOnStick><458.6874><563.8198><-38~-100, LanternOnStick><888.6459><553.5793><76~-99, LanternOnStick><811.3051><363.2947><-45~-82, ScavengerTreasury><717.0922><550.1273><95~234, DataPearl><493.1857><499.8597><0~0~0~0~Misc~0, DataPearl><895.6773><476.4364><98~133~0~0~Misc~0, DataPearl><477.8828><295.1005><0~0~0~0~Misc~0, ScavengerOutpost><716.3047><469.0431><-3~204~75~158~0.9168957~52~12, 
+FadePalette: 4, 0.4347826

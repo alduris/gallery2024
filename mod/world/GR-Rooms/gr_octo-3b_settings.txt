@@ -1,0 +1,11 @@
+Template: NONE
+DangerType: AerieBlizzard
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04999999
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.5978261
+Palette: 0
+Effects: Coldness-1-447-569, 
+PlacedObjects: SnowSource><-1.995697><370.95><Radial~-282~358~913~-122.3975~1~1, SnowSource><854.9561><210.3049><Radial~-296~401~50~86.60254~1~1, SnowSource><460.6588><-16.1216><Radial~-323~165~444.9999~297.6025~1~1, SnowSource><798.5784><547.8527><Radial~-949~186~111~-282.3975~1~1, LocalBlizzard><510.1418><208.891><-737~585~399.0001~106.6025~1~0.5~0.7065217, CellDistortion><517.1864><486.4276><-264~54~-2~-3.397461~1~0.5~0~1, LittlePlanet><516.3419><483.1776><-4~55~Color(~1~1~1~)~Alpha:~1~0~0~Speed:~1, 

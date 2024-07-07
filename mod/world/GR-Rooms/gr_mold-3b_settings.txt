@@ -1,0 +1,17 @@
+Template: NONE
+WaveSpeed: 0.3695652
+WaveLength: 0.8260869
+WaveAmplitude: 0.1304348
+SecondWaveLength: 0
+SecondWaveAmplitude: 0.1847826
+Clouds: 0.8913044
+Grime: 0.4130435
+WaterReflectionAlpha: 1
+Palette: 11
+EffectColorA: 9
+EffectColorB: 13
+Effects: Fog-0.7282609-20-20, BorderPushBack-1-19-102, LightRain-0.2282609-244-14, DirtyWater-1-249-105, Flies-0.07608695-30-30, 
+PlacedObjects: LightSource><708.4927><452.0501><0.173913~White~0~100~50~86.60254~0~1~None~0~0, LightSource><709.0993><393.8685><0.1847825~White~0~100~263~58.60254~0~1~None~0~0, LightSource><709.0934><309.1245><0.173913~White~-79~79~253~224.6025~0~1~None~0~0, LightBeam><37.8064><683.05><-1371~-487~1368~-557~1372~1~143~-238~0.7260868~1~0~0~None~0~0, LightBeam><34.46643><469.6971><0~-321~1371~-326~1374~-5~111~-253~0.421739~1~0~1~None~0~0, LightBeam><35.25427><-53.19994><-4~771~1371~768~1370~0~99~18~0.3999999~1~0~1~None~0~0, 
+AmbientSounds: OMNI><am_env-natwind.ogg><721.2039><400.1946><0.3804348><1.254348, OMNI><am_env-lightwind.ogg><718.6985><478.0568><0.4456522><1.234783, OMNI><so_wat-rainishdrips.ogg><715.1906><351.4409><0.6304348><1.9, OMNI><so_wat-tubwater.ogg><733.8774><292.158><0.326087><0.373913, OMNI><am_wat-sea01.ogg><711.9425><561.8042><0.5><1, SPOT><am_ind-electrichum01.ogg><176.8157><255.3111><0.6086956><0.2956522><708.8157><286.3111><-109.3553><51.64465><0><0.1326087, SPOT><am_ind-superstructure.ogg><694.45><139.7537><0.6195652><0.726087><708.45><284.7581><-121.3553><-5.355347><0><0.1326088, 
+FadePalette: 37, 0.6956522
+MorePalette0: 27, 0.2282609

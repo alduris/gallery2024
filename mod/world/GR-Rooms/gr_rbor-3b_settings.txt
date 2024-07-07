@@ -1,0 +1,11 @@
+Template: NONE
+Clouds: 0
+Grime: 0.2065217
+RandomItemDensity: 0
+RandomItemSpearChance: 0
+Palette: 22
+EffectColorB: 21
+Effects: Fog-0.7065217-20-20, 
+PlacedObjects: Rainbow><467.9904><273.4498><6~474~246~171~0.1086956,0.1086956,0.02173913,0.02173913,0,1, 
+AmbientSounds: OMNI><am_env-citytone.ogg><783.5051><381.0501><0.25><1, SPOT><am_ind-fabrik02.ogg><752.0342><477.4471><0.5><1><462.0342><354.4471><-166.3553><-136.3553><0.173913><0.1, SPOT><am_ind-fabrik01.ogg><715.3964><493.1362><0.5><1><447.3964><311.1362><-3.355347><-27.35535><0.2608696><0.06739144, 
+FadePalette: 10, 0.25

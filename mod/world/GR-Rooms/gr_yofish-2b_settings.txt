@@ -1,0 +1,7 @@
+Template: NONE
+Palette: 53
+EffectColorA: 16
+EffectColorB: 21
+Effects: SkyBloom-0.423913-20-20, Bloom-0.6630435-346-141, SkyAndLightBloom-0.5543478-322-44, Contrast-0.09782609-419-524, Brightness-0.1086956-421-448, Darkness-0.1521739-859-506, 
+PlacedObjects: LightSource><327.558><456.4414><1~Environment~-9~-426~50~86.60254~1~0~None~0~0, LightSource><830.5677><472.9177><1~Environment~-476~-392~50~86.60254~1~0~None~0~0, 
+FadePalette: 11, 0.1195652

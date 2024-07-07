@@ -1,0 +1,17 @@
+Template: NONE
+DangerType: None
+RainIntensity: 0
+RumbleIntensity: 0
+Clouds: 0.2608696
+Grime: 0
+Palette: 30
+EffectColorA: 9
+EffectColorB: 1
+Effects: DayNight-1-20-20, Dustpuffs-1-40-40, HeatWave-0.0326087-50-50, RoofTopView-1-60-60, Flies-0.5652174-70-70, RockFlea-1-80-80, LightBurn-0.1630435-30-30, 
+PlacedObjects: HangingPearls><1811.693><181.5529><, HangingPearls><1356.599><174.6739><, HangingPearls><1137.653><178.6292><, HangingPearls><1687.659><369.1284><, HangingPearls><1264.337><364.134><, HangingPearls><954.6022><361.4219><, HangingPearls><2491.879><359.3405><, HangingPearls><1947.198><175.4752><, HangingPearls><2637.802><378.468><, HangingPearls><2044.101><360.3274><, HangingPearls><2330.812><368.5682><, HangingPearls><2399.897><180.6713><, HangingPearls><2157.128><173.6536><, ScavengerTreasury><2748.111><280.6438><67~139, HangingPearls><718.1448><368.0799><, HangingPearls><679.449><189.2299><, HangingPearls><410.1616><360.4294><, InsectGroup><2106.192><294.0555><234~108~0~0~FireFly~1, DandelionPatch><1906.463><437.4466><0~100, DandelionPatch><2355.7><433.2504><0~100, LightBeam><-197.8289><-51.89645><596~779~2893~790~3000~13~0~0~0.05217395~0~0~0~None~0~0, LanternOnStick><2056.7><327.0082><-71~-102, LanternOnStick><1718.32><333.0869><-73~-114, LanternOnStick><1306.346><319.8728><37~-109, LanternOnStick><1868.902><592.88><54~-191, LanternOnStick><1225.777><566.9481><-112~-197, LanternOnStick><2559.934><325.4215><104~-110, LanternOnStick><2475.597><580.6288><-119~-205, LanternOnStick><691.1278><299.3417><-91~-79, LanternOnStick><860.2981><581.6942><60~-182, DayNightSettings><805.5362><330.5533><5~8.660254~22~33, 
+AmbientSounds: OMNI><AM_ENV-LightWind.ogg><716.5542><432.9592><0.5108696><1, OMNI><AM_ENV-NatWind.ogg><725.1196><396.4103><0.5><1, OMNI><AM_ENV-CityTone.ogg><718.8837><479.6627><0.1847826><1, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>NA_28 - Stargazer<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>680.0184<tB>218.3009<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>1582.018<tB>284.3008<tA>handlePos<tB>-86.35535<tB>-60.35535, 
+FadePalette: 42, 0.08695652, 0.1195652, 0.1086956
+WetTerrain: OFF
+BackgroundOffset: 108.6956,50.00233
+BackgroundType: Rf_Default

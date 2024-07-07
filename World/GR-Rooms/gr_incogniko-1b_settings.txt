@@ -1,7 +1,0 @@
-Template: NONE
-Palette: 3
-EffectColorA: 14
-EffectColorB: 2
-Effects: SkyDandelions-0.6630435-462-664, AboveCloudsView-0.04347826-462-611, TinyDragonFly-0.06521739-462-558, PixelShift-0.04347826-462-506, 
-PlacedObjects: DandelionPeach><370.1531><1557.913><288~-130~2~3, DandelionPeach><401.5322><1579.991><256~-74~2~3, DandelionPeach><382.8112><1594.659><275~-243~2~3, DandelionPatch><467.676><1566.471><135~47, DandelionPatch><502.6614><1274.202><63~47, DandelionPeach><522.7501><1276.214><131~1~2~3, Rainbow><54.80206><516.2358><623~193~-68~153~0.5434783,0.2173913,0.05434782,0.1413043,0.6956522,0.6956522, DandelionPatch><27.97><1857.698><55~113, DandelionPatch><964.6377><1864.645><0~100, DeadTokenStalk><393.0166><1063.539><44~34, DeadTokenStalk><595.5509><943.2576><-55~152, DeadTokenStalk><401.7842><962.4355><30~137, DeadTokenStalk><397.756><1028.438><39~69, DeadTokenStalk><558.3814><991.3995><-15~107, DeadTokenStalk><618.6813><1036.154><-72~64, BlueToken><606.1982><1002.682><-63~97~33~-66~1~DandelionPeach~~0~0~0~0, 
-FadePalette: 6, 0.3804348, 0.5217391, 0.6086956

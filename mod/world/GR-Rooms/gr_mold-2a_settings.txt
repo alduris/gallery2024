@@ -1,0 +1,9 @@
+Template: NONE
+Palette: 1
+EffectColorA: 8
+EffectColorB: 18
+Effects: Fog-0.8260869-20-20, FireFlies-1-33-66, 
+PlacedObjects: LightBeam><568.5894><424.3808><82~300~586~305~185~-12~-520~-533~0.06304335~0~0.9673913~1~None~0~0, DeadTokenStalk><495.573><413.907><-68~129, DeadTokenStalk><745.8009><624.1934><-162~20, DeadTokenStalk><697.8754><529.8442><-147~91, DeadTokenStalk><921.3797><637.1523><19~-115, DeadTokenStalk><846.1804><556.4135><71~-68, DeadTokenStalk><1006.726><698.0515><3~-99, DeadTokenStalk><370.7792><383.6979><-48~93, 
+FadePalette: 15, 0.2934783
+MorePalette0: 10, 0.6521739
+MorePalette1: 5, 0.1956522

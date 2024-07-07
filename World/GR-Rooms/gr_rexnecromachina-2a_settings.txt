@@ -1,8 +1,0 @@
-Template: NONE
-Palette: 8
-EffectColorA: 21
-EffectColorB: 5
-Effects: WaterLights-0.3043478-20-20, ProjectedScanLines-0-1086-83, Bloom-0.4782609-253-93, Desaturation-0.2608696-30-30, Contrast-0.08695652-40-40, Advertisements-1-50-50, RockFlea-1-60-60, 
-PlacedObjects: CorruptionTube><124.695><118.0443><41~260, CorruptionTube><533.5721><142.9086><-97~131, CorruptionTube><521.1812><352.1653><-48~-130, CorruptionTube><518.0471><355.5556><-84~232, LightSource><229.0608><541.3147><1~Environment~13~153~50~86.60254~0~0~None~0~0, LightSource><72.10123><232.1724><1~Environment~4~170~50~86.60254~1~0~None~0~0, LightSource><672.1077><365.1405><1~Environment~10~140~50~86.60254~1~0~None~0~0, LightSource><485.5339><362.8029><1~Environment~45~171~50~86.60254~1~0~None~0~0, LightSource><304.5755><228.4352><1~Environment~16~177~50~86.60254~1~0~None~0~0, LightSource><425.7537><8.199966><0.6304348~Environment~308~103~50~86.60254~1~0~None~0~0, LightSource><144.8975><8.328262><0.8043478~Environment~21~212~50~86.60254~1~0~None~0~0, LightSource><666.8067><20.30174><1~Environment~-23~184~50~86.60254~1~0~None~0~0, LightSource><502.1735><519.6505><1~Environment~8~136~50~86.60254~1~0~None~0~0, LightSource><753.0763><211.6509><1~Environment~70~177~50~86.60254~1~0~None~0~0, LightSource><150.052><372.7783><1~Environment~6~157~50~86.60254~1~0~None~0~0, 
-FadePalette: 4, 0.3913043
-BackgroundOffset: 0,-108.6956

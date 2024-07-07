@@ -1,0 +1,8 @@
+Template: NONE
+Palette: 31
+EffectColorA: 10
+EffectColorB: 0
+Effects: LightRain-0.8043478-20-20, Fog-0.3152174-30-30, AboveCloudsView-0-26-76, 
+PlacedObjects: LightSource><927.5549><506.2943><1~EffectColor1~-34~143~52~-10.39746~0~0~None~0~0, LightSource><75.43466><588.9232><1~EffectColor1~-261~153~50~86.60254~0~0~None~0~0, DeadSeedCob><1123.677><714.1864><, DeadSeedCob><1237.948><720.2807><, DeadSeedCob><2.601898><711.1156><, DeadSeedCob><102.8127><714.1801><, 
+AmbientSounds: OMNI><AM_ENV-CityTone.ogg><734.1937><561.2998><0.3152174><1, OMNI><AM_ENV-LightWind.ogg><726.6506><521.6317><0.6086956><1, OMNI><AM_ENV-Forest.ogg><728.0522><537.0569><0.5><1, OMNI><AM_ENV-WallHum.ogg><732.6815><526.3121><0.326087><1, 
+FadePalette: 33, 0.7065217

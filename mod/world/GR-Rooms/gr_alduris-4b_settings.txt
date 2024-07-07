@@ -1,0 +1,16 @@
+Template: NONE
+WaveSpeed: 0.4725426
+WaveLength: 0.9361879
+WaveAmplitude: 0.0005016308
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.8260869
+Grime: 0.2282609
+Palette: 49
+EffectColorA: 9
+EffectColorB: 6
+Effects: Fog-0.5-451-581, Coldness-0.2065217-451-633, Flies-0.173913-709-632, RockFlea-0.2717391-710-579, ReplaceEffectColorB-0-974-463-Color-0.6739131-0.5760869-0.25, ReplaceEffectColorA-0-975-579-Color-0.5-0.6086956-0.6630435, ColoredCamoBeetles-0.2717391-712-521, Desaturation-0.3478261-451-520, 
+PlacedObjects: LightBeam><312.4111><223.3152><38~559~1287~558~1552~-9~-15~-244~0.04130422~0~0~1~None~0~0, InsectGroup><1593.682><108.6671><-135~80~0~0~MosquitoInsect~0.06521739, 
+AmbientSounds: OMNI><so_sfx-coldnight.ogg><58.94461><176.546><0.3043478><0.6086956, OMNI><am_win-strongwnd2.ogg><57.14307><507.3602><0.2173913><1, OMNI><am_win-howlingwnd.ogg><60.3927><423.4188><0.1413043><0.9217392, OMNI><am_env-citytone.ogg><55.09613><342.6222><0.5><1, OMNI><am_env-winterhum.ogg><61.89771><261.3848><0.3152174><1.117391, SPOT><so_ind-mechhum01.ogg><291.5522><474.4431><0.5><1><22.55225><485.4431><108.6447><-70.35535><0><0.2086958, SPOT><so_ind-hvac.ogg><809.1693><6.643616><0.445652><0.9021736><1934.169><136.6436><-35.35534><-35.35534><0><0.1326085, SPOT><so_ind-weirdvent.ogg><510.946><11.71057><0.5><0.8630434><459.946><77.71057><43.64465><-51.35535><0><0.1, SPOT><so_ind-weirdvent.ogg><297.5574><6.696289><0.5><0.9217392><262.5574><80.69629><-6.355347><-63.35535><0><0.1, 
+FadePalette: 42, 0.3478261, 0.3586957
+MorePalette0: 40, 0.5, 0.5

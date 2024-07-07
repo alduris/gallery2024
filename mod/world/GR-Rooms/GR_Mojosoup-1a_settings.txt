@@ -1,0 +1,14 @@
+Template: NONE
+CeilingDrips: 1
+WaveSpeed: 0.7391304
+WaveLength: 0.423913
+WaveAmplitude: 0.3695652
+SecondWaveLength: 0.177536
+SecondWaveAmplitude: 0
+Clouds: 0.5869565
+Grime: 0
+WaterReflectionAlpha: 0
+Palette: 10
+Effects: HeavyRain-0.0326087-29-118, Lightning-1-282-20, ExtraLoudThunder-0.5760869-289-72, MurkyWater-1-20-20, Desaturation-1-29-61, 
+AmbientSounds: OMNI><AM_RAIN-Rumbles.ogg><731.6129><296.6456><0.75><0.7456522, OMNI><MSC-StructureStrain.ogg><681.6373><232.8954><0.4021739><0.8043478, OMNI><AM_WAT-Shoreline.ogg><724.3233><564.0639><0.8478261><0.9021739, OMNI><AM_WIN-HowlingWnd.ogg><756.0843><504.888><0.7065217><0.8434783, 
+FadePalette: 27, 0.09782609, 0.09782609, 0.09782609, 0.09782609
