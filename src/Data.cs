@@ -179,7 +179,7 @@ namespace Gallery2024
             { "GR_Tat-1b", new("Tat", "Suspended") },
             { "GR_Tcan-1b", new("Tcan", "Bridge/Suspended") },
             { "GR_Tcan-2a", new("Tcan", "Crumbling Crypt") },
-            { "GR_TheCubifyer-2a", new("TheCubifyer", "Crumbling Crypt") },
+            { "GR_TheCubifyer-2a", new("TheCubifyer", "Crumbling Crypt/Growth") },
             { "GR_Tolly-1b", new("Tolly", "Suspended") },
             { "GR_Tolly-2a", new("Tolly", "Crumbling Crypt") },
             { "GR_Tolly-4b", new("Tolly", "Diseased") },
