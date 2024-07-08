@@ -1,0 +1,18 @@
+{
+	"id": "Explorer 2024",
+	"name": "Community Gallery Region 2024",
+	"description": "A collection of rooms submitted as part of the 2024 Leditor Month hosted by Nautillo.<LINE>You are equipped with many tools to assist you on your gallery room safari.",
+	"features": {
+		"color": "ffffff",
+		"weight": 1.12,
+		"tunnel_speed": 1.2,
+		"climb_speed": 1.25,
+		"walk_speed": 1.2,
+		"throw_skill": 2,
+		"back_spear": true,
+		"the_mark": true,
+		"the_glow": true,
+		"expedition_enabled": false,
+		"select_menu_scene": "Slugcat_Gallery2024"
+	}
+}
