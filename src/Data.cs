@@ -161,7 +161,7 @@ namespace Gallery2024
             { "GR_SPIKO-3a", new("SPIKO", "Shrouded Facility") },
             { "GR_SPIKO-3b", new("SPIKO", "Monolith") },
             { "GR_SPIKO-4a", new("SPIKO", "Respite") },
-            { "GR_SPIKO-4b", new("SPIKO", "Diseased") },
+            // { "GR_SPIKO-4b", new("SPIKO", "Diseased") },
             { "GR_StarlightReactor-3b", new("StarlightReactor", "Monolith") },
             { "GR_StarlightReactor-4a", new("StarlightReactor", "Respite") },
             { "GR_Stoatykins-1a", new("Stoatykins", "Bridge") },
