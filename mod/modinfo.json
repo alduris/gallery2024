@@ -2,8 +2,8 @@
 	"id": "Community.Gallery2",
 	"name": "Community Gallery Region 2024",
 	"authors": "Community"
-	"description": "A collection of 185 rooms (469 screens) submitted as part of the 2024 Leditor Month hosted by Nautillo.\n\nThere are no region connections this time, but you play as a slugcat with many assists available to help you on your exploration, should you feel you need it. No rain cycle, no dying, just exploring.",
-	"requirements": ["moreslugcats", "regionkit", "crs", "slugbase"],
+	"description": "A collection of 186 rooms (470 screens) submitted as part of the 2024 Leditor Month hosted by Nautillo.\n\nThere are no region connections this time, but you play as a slugcat with many assists available to help you on your exploration, should you feel you need it. No rain cycle, no dying, just exploring.",
+	"requirements": ["moreslugcats", "regionkit", "crs", "slime-cubed.slugbase"],
 	"requirements_names": ["More Slugcats Expansion", "RegionKit", "Custom Regions Support", "SlugBase"],
 	"checksum_override_version": true
 }

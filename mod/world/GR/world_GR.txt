@@ -24,7 +24,7 @@ GR_bismuth-2b : GR_Mold-2b, GR_NOTGOODGAMER-2b
 GR_Bootleg-1b : GR_Bemo-1b, GR_KOF-1b
 GR_Bootleg-2b : GR_Inspectnerd-2b, GR_quivel-2b
 GR_Bootleg-3a : DISCONNECTED, DISCONNECTED, GR_StarlightReactor-4a, DISCONNECTED, DISCONNECTED, DISCONNECTED, DISCONNECTED, GR_RexNecroMachina-3a, GR_Seroen-3a, GR_Nora-3a
-GR_Bootleg-4b : GR_SPIKO-4b, DISCONNECTED, GR_mayhemmm-4b, GR_QTPI-4b, DISCONNECTED, DISCONNECTED, GR_Seroen-4b, DISCONNECTED, GR_quivel-4b, DISCONNECTED, DISCONNECTED, DISCONNECTED
+GR_Bootleg-4b : GR_SPIKO-4b, DISCONNECTED, GR_mayhemmm-4b, GR_QTPI-4b, DISCONNECTED, DISCONNECTED, GR_Seroen-4b, DISCONNECTED, GR_quivel-4b, DISCONNECTED, DISCONNECTED, GR_RexNecroMachina-4b
 GR_brownie-4a : GR_SPIKO-4a
 GR_catatu-1a : GR_Inspectnerd-1a, GR_Nekovo-1a
 GR_chipped-1a : GR_Mojosoup-1a, DISCONNECTED
@@ -165,7 +165,7 @@ GR_Tcan-2a : GR_wrayk-2a, GR_vprchm-2a
 GR_TheCubifyer-2a : GR_Incogniko-2a, GR_TaGRa-2a
 GR_Tolly-1b : GR_Tat-1b
 GR_Tolly-2a : GR_TaGRa-2a, GR_ROSE-2a, GR_Zarquon-2a
-GR_Tolly-4b : DISCONNECTED, GR_Inspectnerd-4b
+GR_Tolly-4b : GR_RexNecroMachina-4b, GR_Inspectnerd-4b
 GR_Tronsx-1b : GR_ROSE-1a, GR_alekus-1b
 GR_Tronsx-2a : GR_Addy-2b, GR_Rbor-2b, GR_Nekovo-2a, GR_RexNecroMachina-2a
 GR_Tronsx-3b : GR_Rbor-3b, GR_Millisec-3b, GR_Zarquon-3b
@@ -185,6 +185,7 @@ GR_yofish-2b : GR_Seroen-2b
 GR_Zarquon-1b : GR_Tcan-1b
 GR_Zarquon-2a : GR_ROSE-2a, GR_Tolly-2a, GR_Stoatykins-2a, GR_mayhemmm-2a
 GR_Zarquon-3b : GR_Detrax-3b, GR_Tronsx-3b, GR_Dogcat-3b
+GR_RexNecroMachina-4b : GR_Bootleg-4b, DISCONNECTED, GR_Tolly-4b
 END ROOMS
 CREATURES
 

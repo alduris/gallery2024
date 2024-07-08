@@ -1,0 +1,7 @@
+Template: NONE
+Palette: 54
+EffectColorA: 21
+EffectColorB: 6
+Effects: Advertisements-1-20-20, SunBlock-0.3478261-30-30, 
+PlacedObjects: Vine><605.1125><805.0847><200~165, Vine><427.1575><936.3768><176~-132, Vine><958.4065><825.8232><-150~142, Vine><963.941><828.4409><11~282, OEsphere><223.1428><816.64><0~100~50~86.60254~5~1, OEsphere><370.7448><552.7><-3~47~50~86.60254~5~0.08695652, OEsphere><261.8528><603.8646><4~48~50~86.60254~8~0, BlinkingFlower><536.4391><538.6906><, BlinkingFlower><425.1116><472.334><, BlinkingFlower><332.8676><653.8999><, BlinkingFlower><180.6042><594.6707><, Vine><505.9077><574.9274><451~248, NoSpearStickZone><1110.447><603.717><8~123, Vine><498.3035><658.7871><-216~99, ReliableSpear><793.7423><457.1999><, ReliableSpear><396.8627><452.6045><, 
+FadePalette: 42, 0.6630435
