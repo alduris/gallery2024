@@ -11,7 +11,7 @@ GR_Addy-4b : GR_Bootleg-4b
 GR_Alduris-1b : GR_KOF-1b, GR_Inspectnerd-1b
 GR_Alduris-2b : GR_Addy-2b, GR_YIPPEE-2b
 GR_Alduris-3b : GR_ATOM-3b, GR_OCTO-3b, GR_StarlightReactor-3b, GR_Mold-3b
-GR_Alduris-4b : GR_Seroen-4b, GR_NOTGOODGAMER-4b
+GR_Alduris-4b : GR_Bootleg-4b, GR_Inspectnerd-4b
 GR_alekus-1b : GR_Millisec-1b, GR_Tronsx-1b, GR_Seroen-1b, GR_Bemo-1b
 GR_alexavailable-1b : GR_Iswto-1b, GR_Inspectnerd-1b
 GR_ATOM-3b : GR_tyrix, GR_Alduris-3b, GR_DodoDecalogist-3a
@@ -24,10 +24,10 @@ GR_bismuth-2b : GR_Mold-2b, GR_NOTGOODGAMER-2b
 GR_Bootleg-1b : GR_Bemo-1b, GR_KOF-1b
 GR_Bootleg-2b : GR_Inspectnerd-2b, GR_quivel-2b
 GR_Bootleg-3a : DISCONNECTED, DISCONNECTED, GR_StarlightReactor-4a, DISCONNECTED, DISCONNECTED, DISCONNECTED, DISCONNECTED, GR_RexNecroMachina-3a, GR_Seroen-3a, GR_Nora-3a
-GR_Bootleg-4b : GR_Addy-4b, DISCONNECTED, GR_mayhemmm-4b, GR_QTPI-4b, GR_Seroen-4b, DISCONNECTED, GR_Inspectnerd-4b, GR_quivel-4b, GR_RexNecroMachina-4b, DISCONNECTED, DISCONNECTED, DISCONNECTED
+GR_Bootleg-4b : GR_Addy-4b, DISCONNECTED, GR_mayhemmm-4b, GR_QTPI-4b, GR_Rbor-4b, DISCONNECTED, GR_klum-4b, GR_quivel-4b, DISCONNECTED, GR_RexNecroMachina-4b, DISCONNECTED, GR_Alduris-4b
 GR_brownie-4a : GR_SPIKO-4a
 GR_catatu-1a : GR_Inspectnerd-1a, GR_Nekovo-1a
-GR_chipped-1a : GR_Mojosoup-1a, GR_Seroen-1b
+GR_chipped-1a : GR_Mojosoup-1a, GR_Tronsx-2a
 GR_Coolkid-1a : GR_Mojosoup-1a, GR_WYNNE-1a
 GR_Coolkid-1b : GR_Tcan-1b, GR_FFL-1b
 GR_DEDNIKO-1b : GR_FFL-1b, GR_Incogniko-2b
@@ -60,7 +60,7 @@ GR_Inspectnerd-2b : GR_Mold-2b, GR_Bootleg-2b, GR_Seroen-2b
 GR_Inspectnerd-3a : GR_lkelly-3a, GR_izuna-3a
 GR_Inspectnerd-3b : GR_SPIKO-3b, GR_quivel-3b, DISCONNECTED, DISCONNECTED
 GR_Inspectnerd-4a : GR_tapok-4a, GR_Iswto-4a
-GR_Inspectnerd-4b : GR_Bootleg-4b, DISCONNECTED, DISCONNECTED, GR_RexNecroMachina-4b, DISCONNECTED
+GR_Inspectnerd-4b : GR_Alduris-4b, DISCONNECTED, DISCONNECTED, GR_Seroen-4b, DISCONNECTED
 GR_Iswto-1b : GR_Addy-1b, GR_quivel-1b, GR_alexavailable-1b
 GR_Iswto-2b : GR_Ax3lotI-2b, GR_Millisec-2b, GR_Rbor-2b
 GR_Iswto-3b : GR_SPIKO-3b, GR_Addy-3b
@@ -70,7 +70,7 @@ GR_izuna-3a : GR_Inspectnerd-3a, GR_Nekovo-3a
 GR_KAL-1a : GR_WEX-1a, GR_Mojosoup-1a
 GR_klum-2b : GR_quivel-2b, GR_NOTGOODGAMER-2b
 GR_klum-3b : GR_Millisec-3b, GR_NOTGOODGAMER-3b
-GR_klum-4b : GR_Seroen-4b
+GR_klum-4b : GR_Bootleg-4b
 GR_KOF-1b : GR_QTPI-1b, GR_Bootleg-1b, GR_Alduris-1b
 GR_KOF-2b : GR_0rchid-2b, GR_Oscarriaq-2b, GR_quivel-2b, GR_snoodle-2b
 GR_KOF-4a : GR_Nekovo-4a, GR_StarlightReactor-3b, GR_tyrix
@@ -92,7 +92,7 @@ GR_Mold-2a : GR_wrayk-2a, GR_WEX-2a
 GR_Mold-2b : GR_bismuth-2b, GR_Inspectnerd-2b, GR_NOTGOODGAMER-2b
 GR_Mold-3b : GR_Alduris-3b, GR_Millisec-3b
 GR_Mold-4a : GR_nopuddles-4a, GR_Detrax-4a
-GR_Mold-4b : GR_Rbor-4b, GR_0rchid-4b
+GR_Mold-4b : GR_Tronsx-4b, GR_0rchid-4b
 GR_Nekovo-1a : GR_izuna-1a, GR_catatu-1a
 GR_Nekovo-2a : GR_Seroen-2a, GR_Tronsx-2a
 GR_Nekovo-3a : GR_Seroen-3a, GR_lkelly-3a, GR_izuna-3a
@@ -104,7 +104,7 @@ GR_nopuddles-4a : GR_Mold-4a, GR_SPIKO-4a
 GR_Nora-3a : GR_Bootleg-3a, GR_Bemo-3a, GR_RexNecroMachina-3a
 GR_NOTGOODGAMER-2b : GR_Mold-2b, GR_bismuth-2b, GR_klum-2b
 GR_NOTGOODGAMER-3b : GR_klum-3b, GR_tapok-3b
-GR_NOTGOODGAMER-4b : GR_0rchid-4b, GR_Alduris-4b
+GR_NOTGOODGAMER-4b : GR_0rchid-4b, GR_Rbor-4b
 GR_OCTO-3b : GR_Alduris-3b, GR_Rbor-3b
 GR_Oscarriaq-1a : GR_WEX-1a, GR_DepressionBomb-1a
 GR_Oscarriaq-1b : GR_mayhemmm-1b, GR_SPIKO-1b
@@ -118,9 +118,9 @@ GR_quivel-2b : GR_Bootleg-2b, GR_klum-2b, GR_KOF-2b
 GR_quivel-3b : GR_Inspectnerd-3b, GR_Ax3lotI-3b
 GR_quivel-4b : GR_Detrax-4b, GR_tapok-4b, GR_Bootleg-4b
 GR_Rbor-1a : GR_FFL-1a, GR_Seroen-1a
-GR_Rbor-2b : GR_Tronsx-2a, GR_Iswto-2b, GR_tapok-2b
+GR_Rbor-2b : GR_Seroen-1b, GR_Iswto-2b, GR_tapok-2b
 GR_Rbor-3b : GR_OCTO-3b, GR_Tronsx-3b
-GR_Rbor-4b : GR_Mold-4b, GR_Tronsx-4b
+GR_Rbor-4b : GR_NOTGOODGAMER-4b, GR_Bootleg-4b
 GR_ren-1a : GR_parageist-1a, GR_Ax3lotI-1a, GR_nopuddles-1a, GR_DepressionBomb-1a
 GR_RexNecroMachina-2a : GR_0rchid-2a, GR_Tronsx-2a, GR_FFL-2a
 GR_RexNecroMachina-3a : GR_DodoDecalogist-3a, GR_Bootleg-3a, GR_Nora-3a
@@ -129,13 +129,13 @@ GR_RexNecroMachina-4a : GR_Seroen-4a, GR_Detrax-4a
 GR_ROSE-1a : GR_Tronsx-1b, GR_Incogniko-1a
 GR_ROSE-2a : GR_Inspectnerd-2a, GR_Tolly-2a, GR_Zarquon-2a
 GR_Seroen-1a : GR_Rbor-1a, GR_Ax3lotI-1a
-GR_Seroen-1b : GR_chipped-1a, GR_alekus-1b
+GR_Seroen-1b : GR_Rbor-2b, GR_alekus-1b
 GR_Seroen-2a : GR_Inspectnerd-2a, GR_Nekovo-2a, GR_mayhemmm-2a, GR_0rchid-2a
 GR_Seroen-2b : GR_Inspectnerd-2b, GR_yofish-2b, GR_0rchid-2b, GR_FFL-3b
 GR_Seroen-3a : GR_Oscarriaq-3a, GR_Nekovo-3a, GR_Bootleg-3a, GR_Bemo-3a
 GR_Seroen-3b : GR_Dogcat-3b, GR_RexNecroMachina-3b
 GR_Seroen-4a : GR_Dogcat-4a, GR_RexNecroMachina-4a
-GR_Seroen-4b : GR_Bootleg-4b, GR_klum-4b, GR_Alduris-4b
+GR_Seroen-4b : GR_RexNecroMachina-4b, DISCONNECTED, GR_Inspectnerd-4b
 GR_snoodle-1a : GR_FFL-1b
 GR_snoodle-2b : GR_nopuddles-2b, GR_KOF-2b
 GR_SPIKO-1a : GR_TaGRa-1a, GR_Mold-1a
@@ -166,9 +166,9 @@ GR_Tolly-1b : GR_Tat-1b
 GR_Tolly-2a : GR_TaGRa-2a, GR_ROSE-2a, GR_Zarquon-2a
 GR_Tolly-4b : GR_tapok-4b, GR_RexNecroMachina-4b
 GR_Tronsx-1b : GR_ROSE-1a, GR_alekus-1b
-GR_Tronsx-2a : GR_Addy-2b, GR_Rbor-2b, GR_Nekovo-2a, GR_RexNecroMachina-2a
+GR_Tronsx-2a : GR_Addy-2b, GR_chipped-1a, GR_Nekovo-2a, GR_RexNecroMachina-2a
 GR_Tronsx-3b : GR_Rbor-3b, GR_Millisec-3b, GR_Zarquon-3b
-GR_Tronsx-4b : GR_Rbor-4b, GR_QTPI-4b, GR_mayhemmm-4b
+GR_Tronsx-4b : GR_Mold-4b, GR_QTPI-4b, GR_mayhemmm-4b
 GR_tyrix : GR_ATOM-3b, GR_KOF-4a, GR_tapok-4b
 GR_vprchm-1b : GR_FFL-1b, GR_wrayk-1b
 GR_vprchm-2a : GR_Tcan-2a, GR_SPIKO-2a
@@ -184,7 +184,7 @@ GR_yofish-2b : GR_Seroen-2b
 GR_Zarquon-1b : GR_Tcan-1b
 GR_Zarquon-2a : GR_ROSE-2a, GR_Tolly-2a, GR_Stoatykins-2a, GR_mayhemmm-2a
 GR_Zarquon-3b : GR_Detrax-3b, GR_Tronsx-3b, GR_Dogcat-3b
-GR_RexNecroMachina-4b : GR_Inspectnerd-4b, GR_Bootleg-4b, GR_Tolly-4b
+GR_RexNecroMachina-4b : GR_Seroen-4b, GR_Bootleg-4b, GR_Tolly-4b
 END ROOMS
 CREATURES
 
