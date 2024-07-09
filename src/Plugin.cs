@@ -22,7 +22,7 @@ sealed class Plugin : BaseUnityPlugin
 
     public static SlugcatStats.Name Slugcat = new("Explorer 2024", false);
 
-    private readonly ConditionalWeakTable<Player, StrongBox<WorldCoordinate>> lastSafePosCWT = new();
+    private readonly ConditionalWeakTable<AbstractCreature, MutBox<WorldCoordinate>> lastSafePosCWT = new();
 
     public void OnEnable()
     {
@@ -37,6 +37,7 @@ sealed class Plugin : BaseUnityPlugin
         if (IsInit) return;
         IsInit = true;
 
+        On.AbstractCreature.Update += AbstractCreature_Update;
         On.Player.Update += Player_Update;
         On.Player.NewRoom += Player_NewRoom;
         On.Player.SpitOutOfShortCut += Player_SpitOutOfShortCut;
@@ -77,7 +78,10 @@ sealed class Plugin : BaseUnityPlugin
         orig(self, pos, newRoom, spitOutAllSticks);
         if (self.SlugCatClass == Slugcat && !self.dead)
         {
-            lastSafePosCWT.Add(self, new(self.room.GetWorldCoordinate(pos)));
+            if (lastSafePosCWT.TryGetValue(self.abstractCreature, out var box))
+                box.Value = self.room.GetWorldCoordinate(pos);
+            else
+                lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(pos)));
         }
     }
 
@@ -86,7 +90,11 @@ sealed class Plugin : BaseUnityPlugin
         orig(self, newRoom);
         if (self.SlugCatClass == Slugcat && !self.dead)
         {
-            lastSafePosCWT.Add(self, new(self.room.GetWorldCoordinate(self.mainBodyChunk.pos)));
+            var pos = self.mainBodyChunk.pos;
+            if (lastSafePosCWT.TryGetValue(self.abstractCreature, out var box))
+                box.Value = self.room.GetWorldCoordinate(pos);
+            else
+                lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(pos)));
         }
     }
 
@@ -145,40 +153,50 @@ sealed class Plugin : BaseUnityPlugin
             }
 
             // Respawn on death
-            if (!lastSafePosCWT.TryGetValue(self, out var box))
+            if (!lastSafePosCWT.TryGetValue(self.abstractCreature, out _) && self.room != null && !self.dead && self.mainBodyChunk.pos != Vector2.zero)
             {
-                if (self.room != null && !self.dead)
+                lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(self.mainBodyChunk.pos)));
+            }
+        }
+    }
+
+    private void AbstractCreature_Update(On.AbstractCreature.orig_Update orig, AbstractCreature self, int time)
+    {
+        orig(self, time);
+
+        if (
+            self.creatureTemplate.type == CreatureTemplate.Type.Slugcat
+            && self.state is PlayerState ps && ps.slugcatCharacter == Slugcat && (ps.dead || ps.permaDead)
+            && lastSafePosCWT.TryGetValue(self, out var box))
+        {
+            // Destroy the player for realz
+            var safePos = box.Value;
+            self.realizedCreature?.Destroy();
+            self.Abstractize(safePos);
+
+            // Make the game forget we have dieded
+            ps.alive = true;
+            ps.permaDead = false;
+            ps.permanentDamageTracking = 0f;
+
+            // Recreate player, good as new!
+            self.RealizeInRoom();
+
+            // Reset HUD
+            foreach (var cam in self.world.game.cameras)
+            {
+                if (cam.hud != null && (cam.hud.owner as Player)?.abstractCreature == self)
                 {
-                    lastSafePosCWT.Add(self, new(self.room.GetWorldCoordinate(self.mainBodyChunk.pos)));
+                    if (cam.hud.textPrompt != null)
+                        cam.hud.textPrompt.gameOverMode = false;
+
+                    cam.hud.owner = self.realizedObject as Player;
                 }
             }
-            else if (self.dead)
-            {
-                var safePos = box.Value;
-                var absCrit = self.abstractCreature;
-                self.Destroy();
-                absCrit.Abstractize(safePos);
-                if (absCrit.state is PlayerState state)
-                {
-                    state.alive = true;
-                    state.permaDead = false;
-                    state.permanentDamageTracking = 0f;
-                }
-                absCrit.RealizeInRoom();
-                lastSafePosCWT.Add(absCrit.realizedCreature as Player, box);
 
-                // Reset HUD
-                foreach (var cam in absCrit.world.game.cameras)
-                {
-                    if (cam.hud != null && (cam.hud.owner as Player)?.abstractCreature == self.abstractCreature)
-                    {
-                        if (cam.hud.textPrompt != null)
-                            cam.hud.textPrompt.gameOverMode = false;
-
-                        cam.hud.owner = absCrit.realizedObject as Player;
-                    }
-                }
-            }
+            // Play sound and add shockwave
+            (self.realizedCreature as Player).PlayHUDSound(SoundID.SS_AI_Give_The_Mark_Boom);
+            self.Room.realizedRoom.AddObject(new ShockWave(self.realizedCreature.mainBodyChunk.pos, 160f, 0.07f, 9, true));
         }
     }
 }

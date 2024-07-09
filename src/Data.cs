@@ -204,4 +204,9 @@ namespace Gallery2024
             { "GR_Zarquon-3b", new("Zarquon", "Monolith") }
         };
     }
+
+    public class MutBox<T>(T value)
+    {
+        public T Value = value;
+    }
 }
