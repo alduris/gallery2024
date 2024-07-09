@@ -53,6 +53,7 @@ sealed class Plugin : BaseUnityPlugin
             On.DaddyCorruption.BulbNibbleAtChunk += DaddyCorruption_BulbNibbleAtChunk;
             On.DaddyCorruption.Bulb.Update += Bulb_Update;
             On.AbstractCreature.RealizeInRoom += AbstractCreature_RealizeInRoom;
+            On.RainWorldGame.SpawnPlayers_bool_bool_bool_bool_WorldCoordinate += RainWorldGame_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate;
 
             Logger.LogDebug("Ready to explore!");
         }
@@ -60,6 +61,15 @@ sealed class Plugin : BaseUnityPlugin
         {
             Logger.LogError(e);
         }
+    }
+
+    private AbstractCreature RainWorldGame_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate(On.RainWorldGame.orig_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate orig, RainWorldGame self, bool player1, bool player2, bool player3, bool player4, WorldCoordinate location)
+    {
+        if (RainWorld.roomIndexToName.ContainsKey(location.room) && RainWorld.roomIndexToName[location.room].StartsWith("GR_"))
+        {
+            location = new WorldCoordinate(location.room, -1, -1, 0);
+        }
+        return orig(self, player1, player2, player3, player4, location);
     }
 
     private void AbstractCreature_RealizeInRoom(On.AbstractCreature.orig_RealizeInRoom orig, AbstractCreature self)
