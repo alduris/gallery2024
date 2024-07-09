@@ -1,11 +1,14 @@
-﻿using BepInEx;
-using BepInEx.Logging;
-using RWCustom;
+﻿using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Permissions;
+using BepInEx;
+using BepInEx.Logging;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using RWCustom;
 using UnityEngine;
-using static MonoMod.InlineRT.MonoModRule;
+using Random = UnityEngine.Random;
 
 // Allows access to private members
 #pragma warning disable CS0618
@@ -37,15 +40,22 @@ sealed class Plugin : BaseUnityPlugin
         if (IsInit) return;
         IsInit = true;
 
-        On.AbstractCreature.Update += AbstractCreature_Update;
-        On.Player.Update += Player_Update;
-        On.Player.NewRoom += Player_NewRoom;
-        On.Player.SpitOutOfShortCut += Player_SpitOutOfShortCut;
-        On.SaveState.GetStoryDenPosition += SaveState_GetStoryDenPosition;
-        On.RainCycle.Update += RainCycle_Update;
-        On.MultiplayerUnlocks.ClassUnlocked += MultiplayerUnlocks_ClassUnlocked;
+        try
+        {
+            On.RainWorldGame.Update += RainWorldGame_Update;
+            On.Player.Update += Player_Update;
+            On.Player.NewRoom += Player_NewRoom;
+            On.Player.SpitOutOfShortCut += Player_SpitOutOfShortCut;
+            On.SaveState.GetStoryDenPosition += SaveState_GetStoryDenPosition;
+            On.RainCycle.Update += RainCycle_Update;
+            On.MultiplayerUnlocks.ClassUnlocked += MultiplayerUnlocks_ClassUnlocked;
 
-        Logger.LogDebug("Ready to explore!");
+            Logger.LogDebug("Ready to explore!");
+        }
+        catch (Exception e)
+        {
+            Logger.LogError(e);
+        }
     }
 
     private bool MultiplayerUnlocks_ClassUnlocked(On.MultiplayerUnlocks.orig_ClassUnlocked orig, MultiplayerUnlocks self, SlugcatStats.Name classID)
@@ -107,7 +117,7 @@ sealed class Plugin : BaseUnityPlugin
             self.airInLungs = 1f;
 
             // Funny flight mode
-            if (self.input[0].jmp && self.input[1].jmp && self.input[0].pckp && self.input[1].pckp)
+            if (self.input[0].jmp && self.input[1].jmp && !self.input[2].jmp && self.input[0].pckp && self.input[1].pckp && !self.input[2].pckp)
             {
                 self.monkAscension = !self.monkAscension;
             }
@@ -160,43 +170,57 @@ sealed class Plugin : BaseUnityPlugin
         }
     }
 
-    private void AbstractCreature_Update(On.AbstractCreature.orig_Update orig, AbstractCreature self, int time)
+    private void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
     {
-        orig(self, time);
+        orig(self);
+        if (!self.IsStorySession) return;
 
-        if (
-            self.creatureTemplate.type == CreatureTemplate.Type.Slugcat
-            && self.state is PlayerState ps && ps.slugcatCharacter == Slugcat && (ps.dead || ps.permaDead)
-            && lastSafePosCWT.TryGetValue(self, out var box))
+        for (int i = 0; i < self.Players.Count; i++)
         {
-            // Destroy the player for realz
-            var safePos = box.Value;
-            self.realizedCreature?.Destroy();
-            self.Abstractize(safePos);
+            var player = self.Players[i];
+            var state = player.state as PlayerState;
 
-            // Make the game forget we have dieded
-            ps.alive = true;
-            ps.permaDead = false;
-            ps.permanentDamageTracking = 0f;
-
-            // Recreate player, good as new!
-            self.RealizeInRoom();
-
-            // Reset HUD
-            foreach (var cam in self.world.game.cameras)
+            if (state.slugcatCharacter == Slugcat && (state.dead || state.permaDead) && lastSafePosCWT.TryGetValue(player, out var box))
             {
-                if (cam.hud != null && (cam.hud.owner as Player)?.abstractCreature == self)
+                // Destroy the player for realz
+                var safePos = box.Value;
+                player.realizedCreature?.Destroy();
+                player.Abstractize(safePos);
+
+                // Make the game forget we have dieded
+                state.alive = true;
+                state.permaDead = false;
+                state.permanentDamageTracking = 0f;
+                player.slatedForDeletion = false;
+
+                // Recreate player, good as new!
+                player.RealizeInRoom();
+
+                // Also push them slightly out of the hole so they don't immediately go through it sometimes
+                var offset = player.Room.realizedRoom.ShorcutEntranceHoleDirection(safePos.Tile).ToVector2() * 10f;
+                foreach (var chunk in player.realizedCreature.bodyChunks)
                 {
-                    if (cam.hud.textPrompt != null)
-                        cam.hud.textPrompt.gameOverMode = false;
-
-                    cam.hud.owner = self.realizedObject as Player;
+                    chunk.pos += offset;
+                    chunk.lastPos += offset;
+                    chunk.lastLastPos += offset;
                 }
-            }
 
-            // Play sound and add shockwave
-            (self.realizedCreature as Player).PlayHUDSound(SoundID.SS_AI_Give_The_Mark_Boom);
-            self.Room.realizedRoom.AddObject(new ShockWave(self.realizedCreature.mainBodyChunk.pos, 160f, 0.07f, 9, true));
+                // Reset HUD
+                foreach (var cam in self.world.game.cameras)
+                {
+                    if (cam.hud != null && (cam.hud.owner as Player)?.abstractCreature == player)
+                    {
+                        if (cam.hud.textPrompt != null)
+                            cam.hud.textPrompt.gameOverMode = false;
+
+                        cam.hud.owner = player.realizedObject as Player;
+                    }
+                }
+
+                // Play sound and add shockwave
+                (player.realizedCreature as Player).PlayHUDSound(SoundID.SS_AI_Give_The_Mark_Boom);
+                player.Room.realizedRoom.AddObject(new ShockWave(player.realizedCreature.mainBodyChunk.pos, 160f, 0.07f, 9, true));
+            }
         }
     }
 }
