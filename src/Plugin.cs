@@ -65,6 +65,7 @@ sealed class Plugin : BaseUnityPlugin
 
     private AbstractCreature RainWorldGame_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate(On.RainWorldGame.orig_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate orig, RainWorldGame self, bool player1, bool player2, bool player3, bool player4, WorldCoordinate location)
     {
+        // Anyone in the gallery region will spawn from the first node (will be a room entrance)
         if (RainWorld.roomIndexToName.ContainsKey(location.room) && RainWorld.roomIndexToName[location.room].StartsWith("GR_"))
         {
             location = new WorldCoordinate(location.room, -1, -1, 0);
@@ -75,7 +76,7 @@ sealed class Plugin : BaseUnityPlugin
     private void AbstractCreature_RealizeInRoom(On.AbstractCreature.orig_RealizeInRoom orig, AbstractCreature self)
     {
         if (self.creatureTemplate.type == CreatureTemplate.Type.Slugcat && self.state is PlayerState ps && ps.slugcatCharacter == Slugcat)
-            self.tentacleImmune = true;
+            self.tentacleImmune = true; // no tentacles today
 
         orig(self);
     }
@@ -85,13 +86,13 @@ sealed class Plugin : BaseUnityPlugin
         orig(self);
         if (self.eatChunk?.owner is Player p && p.SlugCatClass == Slugcat)
         {
-            self.eatChunk = null;
+            self.eatChunk = null; // bulb no grab gallery slugcat
         }
     }
 
     private void DaddyCorruption_BulbNibbleAtChunk(On.DaddyCorruption.orig_BulbNibbleAtChunk orig, DaddyCorruption self, DaddyCorruption.Bulb bulb, BodyChunk chunk)
     {
-        if (chunk.owner is Player p && p.SlugCatClass == Slugcat) return;
+        if (chunk.owner is Player p && p.SlugCatClass == Slugcat) return; // placed rot doesn't get dinner today
 
         orig(self, bulb, chunk);
     }
@@ -99,14 +100,14 @@ sealed class Plugin : BaseUnityPlugin
     private CreatureTemplate.Relationship ArtificialIntelligence_StaticRelationship(On.ArtificialIntelligence.orig_StaticRelationship orig, ArtificialIntelligence self, AbstractCreature otherCreature)
     {
         if (otherCreature.creatureTemplate.type == CreatureTemplate.Type.Slugcat && otherCreature.state is PlayerState ps && ps.slugcatCharacter == Slugcat)
-            return new(CreatureTemplate.Relationship.Type.DoesntTrack, 1f);
+            return new(CreatureTemplate.Relationship.Type.DoesntTrack, 1f); // everything will not track (intended for stuck daddys)
 
         return orig(self, otherCreature);
     }
 
     private bool MultiplayerUnlocks_ClassUnlocked(On.MultiplayerUnlocks.orig_ClassUnlocked orig, MultiplayerUnlocks self, SlugcatStats.Name classID)
     {
-        return classID != Slugcat && orig(self, classID);
+        return classID != Slugcat && orig(self, classID); // cannot play gallery slugcat in arena
     }
 
     private void RainCycle_Update(On.RainCycle.orig_Update orig, RainCycle self)
@@ -114,7 +115,7 @@ sealed class Plugin : BaseUnityPlugin
         orig(self);
         if (self.world?.region?.name == "GR" && self.timer > self.cycleLength / 2)
         {
-            self.timer = self.cycleLength / 2;
+            self.timer = self.cycleLength / 2; // no going past half cycle
         }
     }
 
@@ -122,6 +123,7 @@ sealed class Plugin : BaseUnityPlugin
     {
         if (slugcat == Slugcat)
         {
+            // Pick a random GR room to spawn in at start of cycle
             isVanilla = false;
             return Data.Rooms.Keys.ToArray()[Random.Range(0, Data.Rooms.Count)];
         }
@@ -132,6 +134,8 @@ sealed class Plugin : BaseUnityPlugin
     private void Player_SpitOutOfShortCut(On.Player.orig_SpitOutOfShortCut orig, Player self, IntVector2 pos, Room newRoom, bool spitOutAllSticks)
     {
         orig(self, pos, newRoom, spitOutAllSticks);
+
+        // Save last visited shortcut hole for respawning
         if (self.SlugCatClass == Slugcat && !self.dead)
         {
             if (lastSafePosCWT.TryGetValue(self.abstractCreature, out var box))
@@ -144,6 +148,8 @@ sealed class Plugin : BaseUnityPlugin
     private void Player_NewRoom(On.Player.orig_NewRoom orig, Player self, Room newRoom)
     {
         orig(self, newRoom);
+
+        // I think this is redundant with the spitting out of shortcut code but just in case, save a position
         if (self.SlugCatClass == Slugcat && !self.dead)
         {
             var pos = self.mainBodyChunk.pos;
@@ -210,7 +216,7 @@ sealed class Plugin : BaseUnityPlugin
 
             // Respawn on death
             if (
-                (!lastSafePosCWT.TryGetValue(self.abstractCreature, out var box) || box.Value.room != self.room?.abstractRoom.index)
+                (!lastSafePosCWT.TryGetValue(self.abstractCreature, out var box) || box.Value.room != self.room?.abstractRoom.index || !box.Value.TileDefined)
                 && self.room != null
                 && !self.dead && self.mainBodyChunk.pos != Vector2.zero)
             {
