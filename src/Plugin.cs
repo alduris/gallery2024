@@ -49,6 +49,10 @@ sealed class Plugin : BaseUnityPlugin
             On.SaveState.GetStoryDenPosition += SaveState_GetStoryDenPosition;
             On.RainCycle.Update += RainCycle_Update;
             On.MultiplayerUnlocks.ClassUnlocked += MultiplayerUnlocks_ClassUnlocked;
+            On.ArtificialIntelligence.StaticRelationship += ArtificialIntelligence_StaticRelationship;
+            On.DaddyCorruption.BulbNibbleAtChunk += DaddyCorruption_BulbNibbleAtChunk;
+            On.DaddyCorruption.Bulb.Update += Bulb_Update;
+            On.AbstractCreature.RealizeInRoom += AbstractCreature_RealizeInRoom;
 
             Logger.LogDebug("Ready to explore!");
         }
@@ -56,6 +60,38 @@ sealed class Plugin : BaseUnityPlugin
         {
             Logger.LogError(e);
         }
+    }
+
+    private void AbstractCreature_RealizeInRoom(On.AbstractCreature.orig_RealizeInRoom orig, AbstractCreature self)
+    {
+        if (self.creatureTemplate.type == CreatureTemplate.Type.Slugcat && self.state is PlayerState ps && ps.slugcatCharacter == Slugcat)
+            self.tentacleImmune = true;
+
+        orig(self);
+    }
+
+    private void Bulb_Update(On.DaddyCorruption.Bulb.orig_Update orig, DaddyCorruption.Bulb self)
+    {
+        orig(self);
+        if (self.eatChunk?.owner is Player p && p.SlugCatClass == Slugcat)
+        {
+            self.eatChunk = null;
+        }
+    }
+
+    private void DaddyCorruption_BulbNibbleAtChunk(On.DaddyCorruption.orig_BulbNibbleAtChunk orig, DaddyCorruption self, DaddyCorruption.Bulb bulb, BodyChunk chunk)
+    {
+        if (chunk.owner is Player p && p.SlugCatClass == Slugcat) return;
+
+        orig(self, bulb, chunk);
+    }
+
+    private CreatureTemplate.Relationship ArtificialIntelligence_StaticRelationship(On.ArtificialIntelligence.orig_StaticRelationship orig, ArtificialIntelligence self, AbstractCreature otherCreature)
+    {
+        if (otherCreature.creatureTemplate.type == CreatureTemplate.Type.Slugcat && otherCreature.state is PlayerState ps && ps.slugcatCharacter == Slugcat)
+            return new(CreatureTemplate.Relationship.Type.DoesntTrack, 1f);
+
+        return orig(self, otherCreature);
     }
 
     private bool MultiplayerUnlocks_ClassUnlocked(On.MultiplayerUnlocks.orig_ClassUnlocked orig, MultiplayerUnlocks self, SlugcatStats.Name classID)
@@ -163,7 +199,10 @@ sealed class Plugin : BaseUnityPlugin
             }
 
             // Respawn on death
-            if (!lastSafePosCWT.TryGetValue(self.abstractCreature, out _) && self.room != null && !self.dead && self.mainBodyChunk.pos != Vector2.zero)
+            if (
+                (!lastSafePosCWT.TryGetValue(self.abstractCreature, out var box) || box.Value.room != self.room?.abstractRoom.index)
+                && self.room != null
+                && !self.dead && self.mainBodyChunk.pos != Vector2.zero)
             {
                 lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(self.mainBodyChunk.pos)));
             }
@@ -197,7 +236,7 @@ sealed class Plugin : BaseUnityPlugin
                 player.RealizeInRoom();
 
                 // Also push them slightly out of the hole so they don't immediately go through it sometimes
-                var offset = player.Room.realizedRoom.ShorcutEntranceHoleDirection(safePos.Tile).ToVector2() * 10f;
+                var offset = player.Room.realizedRoom.ShorcutEntranceHoleDirection(safePos.Tile).ToVector2() * -10f;
                 foreach (var chunk in player.realizedCreature.bodyChunks)
                 {
                     chunk.pos += offset;
