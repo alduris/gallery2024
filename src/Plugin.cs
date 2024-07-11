@@ -4,8 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 using BepInEx;
 using BepInEx.Logging;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
 using RWCustom;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,13 +15,15 @@ using Random = UnityEngine.Random;
 
 namespace Gallery2024;
 
-[BepInPlugin("Community.Gallery2", "Community Gallery Region 2024", "1.0")]
+[BepInPlugin(MOD_ID, "Community Gallery Region 2024", "1.0")]
 sealed class Plugin : BaseUnityPlugin
 {
+    public const string MOD_ID = "Community.Gallery2";
     public static new ManualLogSource Logger;
     public bool IsInit;
 
     public static SlugcatStats.Name Slugcat = new("Explorer 2024", false);
+    public static Options OI = null;
 
     private readonly ConditionalWeakTable<AbstractCreature, MutBox<WorldCoordinate>> lastSafePosCWT = new();
 
@@ -54,6 +54,7 @@ sealed class Plugin : BaseUnityPlugin
             On.DaddyCorruption.Bulb.Update += Bulb_Update;
             On.AbstractCreature.RealizeInRoom += AbstractCreature_RealizeInRoom;
             On.RainWorldGame.SpawnPlayers_bool_bool_bool_bool_WorldCoordinate += RainWorldGame_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate;
+            On.Player.ClassMechanicsSaint += Player_ClassMechanicsSaint;
 
             Logger.LogDebug("Ready to explore!");
         }
@@ -61,6 +62,14 @@ sealed class Plugin : BaseUnityPlugin
         {
             Logger.LogError(e);
         }
+
+        OI = new Options();
+        MachineConnector.SetRegisteredOI(MOD_ID, OI);
+    }
+
+    private void Player_ClassMechanicsSaint(On.Player.orig_ClassMechanicsSaint orig, Player self)
+    {
+        if (self.SlugCatClass != Slugcat) orig(self);
     }
 
     private AbstractCreature RainWorldGame_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate(On.RainWorldGame.orig_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate orig, RainWorldGame self, bool player1, bool player2, bool player3, bool player4, WorldCoordinate location)
@@ -125,7 +134,9 @@ sealed class Plugin : BaseUnityPlugin
         {
             // Pick a random GR room to spawn in at start of cycle
             isVanilla = false;
-            return Data.Rooms.Keys.ToArray()[Random.Range(0, Data.Rooms.Count)];
+            string room = Data.Rooms.Keys.ToArray()[Random.Range(0, Data.Rooms.Count)];
+            Data.UpdateVisited(room);
+            return room;
         }
 
         return orig(slugcat, out isVanilla);
@@ -157,6 +168,8 @@ sealed class Plugin : BaseUnityPlugin
                 box.Value = self.room.GetWorldCoordinate(pos);
             else
                 lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(pos)));
+
+            Data.UpdateVisited(newRoom.abstractRoom.name);
         }
     }
 
@@ -169,9 +182,11 @@ sealed class Plugin : BaseUnityPlugin
             self.airInLungs = 1f;
 
             // Funny flight mode
-            if (self.input[0].jmp && self.input[1].jmp && !self.input[2].jmp && self.input[0].pckp && self.input[1].pckp && !self.input[2].pckp)
+            if (self.wantToJump > 0 && self.canJump <= 0 && self.input[0].pckp && self.input[1].pckp)
             {
-                self.monkAscension = !self.monkAscension;
+                self.monkAscension = OI.AllowFlight.Value && !self.monkAscension;
+                self.wantToJump = 0;
+                self.PlayHUDSound(self.monkAscension ? SoundID.SS_AI_Give_The_Mark_Boom : SoundID.HUD_Pause_Game);
             }
 
             if (self.monkAscension)
@@ -185,32 +200,26 @@ sealed class Plugin : BaseUnityPlugin
                 self.bodyMode = Player.BodyModeIndex.Default;
                 self.gravity = 0f;
                 self.airFriction = 0.7f;
-                float num = 2.75f;
-                if (self.killWait >= 0.2f && !self.forceBurst)
-                {
-                    self.airFriction = 0.1f;
-                    self.bodyChunks[0].vel = Custom.RNV() * Mathf.Lerp(0f, 20f, self.killWait);
-                    num = 0f;
-                }
+                float speed = 2.75f;
                 if (self.input[0].y > 0)
                 {
-                    self.bodyChunks[0].vel.y = self.bodyChunks[0].vel.y + num;
-                    self.bodyChunks[1].vel.y = self.bodyChunks[1].vel.y + (num - 1f);
+                    self.bodyChunks[0].vel.y = self.bodyChunks[0].vel.y + speed;
+                    self.bodyChunks[1].vel.y = self.bodyChunks[1].vel.y + (speed - 1f);
                 }
                 else if (self.input[0].y < 0)
                 {
-                    self.bodyChunks[0].vel.y = self.bodyChunks[0].vel.y - num;
-                    self.bodyChunks[1].vel.y = self.bodyChunks[1].vel.y - (num - 1f);
+                    self.bodyChunks[0].vel.y = self.bodyChunks[0].vel.y - speed;
+                    self.bodyChunks[1].vel.y = self.bodyChunks[1].vel.y - (speed - 1f);
                 }
                 if (self.input[0].x > 0)
                 {
-                    self.bodyChunks[0].vel.x = self.bodyChunks[0].vel.x + num;
-                    self.bodyChunks[1].vel.x = self.bodyChunks[1].vel.x + (num - 1f);
+                    self.bodyChunks[0].vel.x = self.bodyChunks[0].vel.x + speed;
+                    self.bodyChunks[1].vel.x = self.bodyChunks[1].vel.x + (speed - 1f);
                 }
                 else if (self.input[0].x < 0)
                 {
-                    self.bodyChunks[0].vel.x = self.bodyChunks[0].vel.x - num;
-                    self.bodyChunks[1].vel.x = self.bodyChunks[1].vel.x - (num - 1f);
+                    self.bodyChunks[0].vel.x = self.bodyChunks[0].vel.x - speed;
+                    self.bodyChunks[1].vel.x = self.bodyChunks[1].vel.x - (speed - 1f);
                 }
             }
 

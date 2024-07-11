@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gallery2024
 {
@@ -203,6 +201,57 @@ namespace Gallery2024
             { "GR_Zarquon-2a", new("Zarquon", "Crumbling Crypt/Growth") },
             { "GR_Zarquon-3b", new("Zarquon", "Monolith") }
         };
+
+        private static bool _pulled = false;
+        private static readonly HashSet<string> _visited = [];
+
+        private static void PullRooms()
+        {
+            if (!_pulled && Plugin.OI != null)
+            {
+                _pulled = true;
+                var str = Plugin.OI.VisitedRooms.Value;
+                try
+                {
+                    var json = ((List<object>)Json.Deserialize(str)).Cast<string>();
+                    foreach (var item in json)
+                    {
+                        if (Rooms.ContainsKey(item))
+                        {
+                            _visited.Add(item);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Plugin.Logger.LogError("Error reading visited rooms!");
+                    Plugin.Logger.LogError(e);
+                    Plugin.OI.VisitedRooms.Value = "[]";
+                }
+            }
+        }
+
+        public static List<string> VisitedRooms
+        {
+            get
+            {
+                PullRooms();
+                return [.. _visited];
+            }
+        }
+
+        public static int UpdateVisited(string room)
+        {
+            PullRooms();
+            if (Rooms.ContainsKey(room) && _visited.Add(room))
+            {
+                Plugin.OI.VisitedRooms.Value = Json.Serialize(_visited.ToList());
+                Plugin.OI.config.Save();
+            }
+            return _visited.Count; // return how many rooms have been visited
+        }
+
+        public static int TotalRooms => Rooms.Count;
     }
 
     public class MutBox<T>(T value)
