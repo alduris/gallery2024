@@ -12,7 +12,7 @@ namespace Gallery2024
         public Options()
         {
             StreamMode = config.Bind("StreamMode", false);
-            AllowFlight = config.Bind("AllowFlilght", true);
+            AllowFlight = config.Bind("AllowFlilght", false);
             VisitedRooms = config.Bind("RoomSave", "[]");
         }
 
