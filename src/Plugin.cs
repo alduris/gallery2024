@@ -152,9 +152,12 @@ sealed class Plugin : BaseUnityPlugin
         if (slugcat == Slugcat)
         {
             // Pick a random GR room to spawn in at start of cycle
+            Random.State state = Random.state;
+            Random.InitState((int)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds()); // I hope this doesn't crash due to casting errors after 03:14:07 UTC on 19 January 2038
             isVanilla = false;
             string room = Data.Rooms.Keys.ToArray()[Random.Range(0, Data.Rooms.Count)];
             Data.UpdateVisited(room);
+            Random.state = state;
             return room;
         }
 
