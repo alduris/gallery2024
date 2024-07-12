@@ -26,6 +26,7 @@ sealed class Plugin : BaseUnityPlugin
     public static Options OI = null;
 
     private readonly ConditionalWeakTable<AbstractCreature, MutBox<WorldCoordinate>> lastSafePosCWT = new();
+    private readonly ConditionalWeakTable<Player, Counter> creditCWT = new();
 
     public void OnEnable()
     {
@@ -55,8 +56,10 @@ sealed class Plugin : BaseUnityPlugin
             On.AbstractCreature.RealizeInRoom += AbstractCreature_RealizeInRoom;
             On.RainWorldGame.SpawnPlayers_bool_bool_bool_bool_WorldCoordinate += RainWorldGame_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate;
             On.Player.ClassMechanicsSaint += Player_ClassMechanicsSaint;
+            On.Player.Destroy += Player_Destroy;
+            On.HUD.FoodMeter.Update += FoodMeter_Update;
 
-            Logger.LogDebug("Ready to explore!");
+            Logger.LogInfo("Ready to explore!");
         }
         catch (Exception e)
         {
@@ -65,6 +68,22 @@ sealed class Plugin : BaseUnityPlugin
 
         OI = new Options();
         MachineConnector.SetRegisteredOI(MOD_ID, OI);
+    }
+
+    private void FoodMeter_Update(On.HUD.FoodMeter.orig_Update orig, HUD.FoodMeter self)
+    {
+        orig(self);
+        if (self.hud.owner is Player player && player.SlugCatClass == Slugcat)
+        {
+            self.fade = 0f;
+            self.lastFade = 0f;
+        }
+    }
+
+    private void Player_Destroy(On.Player.orig_Destroy orig, Player self)
+    {
+        orig(self);
+        creditCWT.Remove(self);
     }
 
     private void Player_ClassMechanicsSaint(On.Player.orig_ClassMechanicsSaint orig, Player self)
@@ -177,9 +196,22 @@ sealed class Plugin : BaseUnityPlugin
     {
         orig(self, eu);
 
-        if (self.SlugCatClass == Slugcat)
+        if (self.SlugCatClass == Slugcat && self.room != null)
         {
             self.airInLungs = 1f;
+
+            // Room credit
+            if (self.input[0].mp)
+            {
+                if (!creditCWT.TryGetValue(self, out Counter counter) || counter.slatedForDeletetion)
+                {
+                    counter = new Counter(self, self.room);
+                    self.room.AddObject(counter);
+                    creditCWT.Remove(self);
+                    creditCWT.Add(self, counter);
+                }
+                counter.Activate();
+            }
 
             // Funny flight mode
             if (self.wantToJump > 0 && self.canJump <= 0 && self.input[0].pckp && self.input[1].pckp)

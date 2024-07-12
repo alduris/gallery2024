@@ -251,7 +251,32 @@ namespace Gallery2024
             return _visited.Count; // return how many rooms have been visited
         }
 
-        public static int TotalRooms => Rooms.Count;
+        public static RoomData GetRoomData(string room)
+        {
+            if (Rooms.TryGetValue(room, out var roomData))
+            {
+                return roomData;
+            }
+
+            return new RoomData()
+            {
+                author = "",
+                prompts = ""
+            };
+        }
+
+        public static void Reset()
+        {
+            if (_visited.Count > 0)
+            {
+                _visited.Clear();
+                Plugin.OI.VisitedRooms.Value = "[]";
+                Plugin.OI.config.Save();
+            }
+        }
+
+        public static int VisitedCount => _visited.Count;
+        public static int TotalRoomCount => Rooms.Count;
     }
 
     public class MutBox<T>(T value)
