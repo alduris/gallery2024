@@ -169,9 +169,13 @@ sealed class Plugin : BaseUnityPlugin
         if (self.SlugCatClass == Slugcat && !self.dead)
         {
             if (lastSafePosCWT.TryGetValue(self.abstractCreature, out var box))
+            {
                 box.Value = self.room.GetWorldCoordinate(pos);
+            }
             else
+            {
                 lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(pos)));
+            }
         }
     }
 
@@ -182,12 +186,6 @@ sealed class Plugin : BaseUnityPlugin
         // I think this is redundant with the spitting out of shortcut code but just in case, save a position
         if (self.SlugCatClass == Slugcat && !self.dead)
         {
-            var pos = self.mainBodyChunk.pos;
-            if (lastSafePosCWT.TryGetValue(self.abstractCreature, out var box))
-                box.Value = self.room.GetWorldCoordinate(pos);
-            else
-                lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(pos)));
-
             Data.UpdateVisited(newRoom.abstractRoom.name);
         }
     }
@@ -256,12 +254,16 @@ sealed class Plugin : BaseUnityPlugin
             }
 
             // Respawn on death
-            if (
-                (!lastSafePosCWT.TryGetValue(self.abstractCreature, out var box) || box.Value.room != self.room?.abstractRoom.index || !box.Value.TileDefined)
-                && self.room != null
-                && !self.dead && self.mainBodyChunk.pos != Vector2.zero)
+            if (self.room != null && !self.dead && self.mainBodyChunk.pos != Vector2.zero)
             {
-                lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(self.mainBodyChunk.pos)));
+                if (!lastSafePosCWT.TryGetValue(self.abstractCreature, out var box))
+                {
+                    lastSafePosCWT.Add(self.abstractCreature, new(self.room.GetWorldCoordinate(self.mainBodyChunk.pos)));
+                }
+                else if (box.Value.room != self.room?.abstractRoom.index || !box.Value.TileDefined)
+                {
+                    box.Value = self.room.GetWorldCoordinate(self.mainBodyChunk.pos);
+                }
             }
         }
     }
