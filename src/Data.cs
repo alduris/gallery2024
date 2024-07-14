@@ -81,6 +81,8 @@ namespace Gallery2024
             { "GR_Iswto-4a", new("Iswto", "Respite") },
             { "GR_izuna-1a", new("izuna", "Bridge/Suspended") },
             { "GR_izuna-3a", new("izuna", "Shrouded Facility") },
+            { "GR_Jevmen-1a", new("Jevmen", "Bridge") },
+            { "GR_Jevmen-2a", new("Jevmen", "Crumbling Crypt") },
             { "GR_KAL-1a", new("KAL", "Bridge") },
             { "GR_klum-2b", new("klum", "Growth") },
             { "GR_klum-3b", new("klum", "Monolith") },
