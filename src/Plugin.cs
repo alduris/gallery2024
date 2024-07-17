@@ -63,6 +63,10 @@ sealed class Plugin : BaseUnityPlugin
 			LoadShaders(self);
 			On.HUD.Map.OnMapConnection.Update += OnMapConnection_Update;
 			On.HUD.Map.Update += Map_Update;
+			
+			// L4 fix stolen from mergefix
+			On.RoomCamera.MoveCamera2 += RoomCamera_MoveCamera2;
+			On.RoomCamera.MoveCamera_Room_int += RoomCamera_MoveCamera_Room_int;
 
 			Logger.LogInfo("Ready to explore!");
 		}
@@ -81,6 +85,19 @@ sealed class Plugin : BaseUnityPlugin
 		rainWorld.Shaders["VisibleMap"] = FShader.CreateShader("VisibleMap", assetBundle.LoadAsset<Shader>("Assets/VisibleMap.shader"));
 	}
 
+	private static void RoomCamera_MoveCamera_Room_int(On.RoomCamera.orig_MoveCamera_Room_int orig, RoomCamera self, Room newRoom, int camPos)
+    {
+        orig(self, newRoom, camPos);
+        if (!System.IO.File.Exists(WorldLoader.FindRoomFile(newRoom.abstractRoom.name, false, "_" + (camPos + 1).ToString() + "_bkg.png")))
+        { self.preLoadedBKG = null; }
+    }
+
+    private static void RoomCamera_MoveCamera2(On.RoomCamera.orig_MoveCamera2 orig, RoomCamera self, string roomName, int camPos)
+    {
+        orig(self, roomName, camPos);
+        if (!System.IO.File.Exists(WorldLoader.FindRoomFile(roomName, false, "_" + (camPos + 1).ToString() + "_bkg.png")))
+        { self.preLoadedBKG = null; }
+    }
 	
 	private void Map_Update(On.HUD.Map.orig_Update orig, HUD.Map self)
 	{
