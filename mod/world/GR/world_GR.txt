@@ -75,7 +75,7 @@ GR_KOF-1b : GR_QTPI-1b, GR_Bootleg-1b, GR_Alduris-1b
 GR_KOF-2b : GR_0rchid-2b, GR_Oscarriaq-2b, GR_quivel-2b, GR_snoodle-2b
 GR_KOF-4a : GR_Nekovo-4a, GR_Deerstop-4a, GR_tyrix
 GR_lkelly-1b : GR_Inspectnerd-1b
-GR_lkelly-3a : GR_Inspectnerd-3a, GR_Nekovo-3a
+GR_lkelly-3a : GR_Inspectnerd-3a, GR_Isbjorn52-3a
 GR_mayhemmm-1b : GR_FFL-1b, GR_Oscarriaq-1b
 GR_mayhemmm-2a : GR_Zarquon-2a, GR_Seroen-2a
 GR_mayhemmm-4b : GR_Tronsx-4b, GR_Bootleg-4b
@@ -95,7 +95,7 @@ GR_Mold-4a : GR_nopuddles-4a, GR_Detrax-4a
 GR_Mold-4b : GR_Tronsx-4b, GR_0rchid-4b
 GR_Nekovo-1a : GR_izuna-1a, GR_catatu-1a
 GR_Nekovo-2a : GR_Seroen-2a, GR_Tronsx-2a
-GR_Nekovo-3a : GR_Seroen-3a, GR_lkelly-3a, GR_izuna-3a
+GR_Nekovo-3a : GR_Seroen-3a, GR_Isbjorn52-3a, GR_izuna-3a
 GR_Nekovo-4a : GR_KOF-4a, GR_Detrax-4a
 GR_nopuddles-1a : GR_ren-1a, GR_Stoatykins-1a, GR_Dogcat-1a
 GR_nopuddles-2b : GR_snoodle-2b, GR_tapok-2b
@@ -187,6 +187,7 @@ GR_Zarquon-3b : GR_Detrax-3b, GR_Tronsx-3b, GR_Dogcat-3b
 GR_RexNecroMachina-4b : GR_Seroen-4b, GR_Bootleg-4b, GR_Tolly-4b
 GR_Jevmen-1a : GR_tapok-1a, GR_Stoatykins-1a
 GR_Jevmen-2a : GR_WEX-2a
+GR_Isbjorn52-3a : GR_lkelly-3a, GR_Nekovo-3a
 END ROOMS
 CREATURES
 
