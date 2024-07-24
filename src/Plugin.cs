@@ -43,26 +43,27 @@ sealed class Plugin : BaseUnityPlugin
 
 		try
 		{
-			On.RainWorldGame.Update += RainWorldGame_Update;
-			On.Player.Update += Player_Update;
-			On.Player.NewRoom += Player_NewRoom;
-			On.Player.SpitOutOfShortCut += Player_SpitOutOfShortCut;
-			On.SaveState.GetStoryDenPosition += SaveState_GetStoryDenPosition;
-			On.RainCycle.Update += RainCycle_Update;
-			On.MultiplayerUnlocks.ClassUnlocked += MultiplayerUnlocks_ClassUnlocked;
-			On.ArtificialIntelligence.StaticRelationship += ArtificialIntelligence_StaticRelationship;
-			On.DaddyCorruption.BulbNibbleAtChunk += DaddyCorruption_BulbNibbleAtChunk;
-			On.DaddyCorruption.Bulb.Update += Bulb_Update;
-			On.AbstractCreature.RealizeInRoom += AbstractCreature_RealizeInRoom;
-			On.RainWorldGame.SpawnPlayers_bool_bool_bool_bool_WorldCoordinate += RainWorldGame_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate;
-			On.Player.ClassMechanicsSaint += Player_ClassMechanicsSaint;
-			On.Player.Destroy += Player_Destroy;
-			On.HUD.FoodMeter.Update += FoodMeter_Update;
+			On.RainWorldGame.Update += PlayerRespawnHook;
+			On.Player.Update += PlayerAbilitiesHook;
+			On.Player.NewRoom += UpdateVisitedRoomsHook;
+			On.Player.SpitOutOfShortCut += SaveSafePositionHook;
+			On.SaveState.GetStoryDenPosition += RandomSpawnRoomHook;
+			On.RainCycle.Update += RainCycleFreezeHook;
+			On.MultiplayerUnlocks.ClassUnlocked += NoPlayInArenaHook;
+			On.ArtificialIntelligence.StaticRelationship += NoRelationshipsHook;
+			On.DaddyCorruption.BulbNibbleAtChunk += CorruptionCannotEatMeHook;
+			On.DaddyCorruption.Bulb.Update += CorruptionCannotGrabMeHook;
+			On.AbstractCreature.RealizeInRoom += TentacleImmunityHook;
+			On.RainWorldGame.SpawnPlayers_bool_bool_bool_bool_WorldCoordinate += RoomSpawnPosFixHook;
+			On.Player.ClassMechanicsSaint += ClassMechanicsSaintDisableHook;
+			On.Player.Destroy += DestroyCreditsHook;
+			On.HUD.FoodMeter.Update += NoShowFoodMeterHook;
+            On.HUD.KarmaMeter.Update += NoShowKarmaMeterHook;
 			
 			// Map stuff
 			LoadShaders(self);
-			On.HUD.Map.OnMapConnection.Update += OnMapConnection_Update;
-			On.HUD.Map.Update += Map_Update;
+			On.HUD.Map.OnMapConnection.Update += FadeMapConnectionHook;
+			On.HUD.Map.Update += GRMapShaderHook;
 			
 			// L4 fix stolen from mergefix
 			On.RoomCamera.MoveCamera2 += RoomCamera_MoveCamera2;
@@ -78,8 +79,8 @@ sealed class Plugin : BaseUnityPlugin
 		OI = new Options();
 		MachineConnector.SetRegisteredOI(MOD_ID, OI);
 	}
-	
-	private void LoadShaders(RainWorld rainWorld)
+
+    private void LoadShaders(RainWorld rainWorld)
 	{
 		AssetBundle assetBundle = AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assets/mapshader"));
 		rainWorld.Shaders["VisibleMap"] = FShader.CreateShader("VisibleMap", assetBundle.LoadAsset<Shader>("Assets/VisibleMap.shader"));
@@ -99,7 +100,7 @@ sealed class Plugin : BaseUnityPlugin
         { self.preLoadedBKG = null; }
     }
 	
-	private void Map_Update(On.HUD.Map.orig_Update orig, HUD.Map self)
+	private void GRMapShaderHook(On.HUD.Map.orig_Update orig, HUD.Map self)
 	{
 		orig(self);
 		
@@ -112,7 +113,7 @@ sealed class Plugin : BaseUnityPlugin
 	}
 
 	
-	private void OnMapConnection_Update(On.HUD.Map.OnMapConnection.orig_Update orig, HUD.Map.OnMapConnection self)
+	private void FadeMapConnectionHook(On.HUD.Map.OnMapConnection.orig_Update orig, HUD.Map.OnMapConnection self)
 	{
 		orig(self);
 		
@@ -125,7 +126,17 @@ sealed class Plugin : BaseUnityPlugin
 		self.lastRevealB = Mathf.Max(0.15f, self.lastRevealB);
 	}
 
-	private void FoodMeter_Update(On.HUD.FoodMeter.orig_Update orig, HUD.FoodMeter self)
+    private void NoShowKarmaMeterHook(On.HUD.KarmaMeter.orig_Update orig, HUD.KarmaMeter self)
+    {
+		orig(self);
+        if (self.hud.owner is Player player && player.SlugCatClass == Slugcat)
+        {
+            self.fade = 0f;
+            self.lastFade = 0f;
+        }
+    }
+
+	private void NoShowFoodMeterHook(On.HUD.FoodMeter.orig_Update orig, HUD.FoodMeter self)
 	{
 		orig(self);
 		if (self.hud.owner is Player player && player.SlugCatClass == Slugcat)
@@ -135,18 +146,18 @@ sealed class Plugin : BaseUnityPlugin
 		}
 	}
 
-	private void Player_Destroy(On.Player.orig_Destroy orig, Player self)
+	private void DestroyCreditsHook(On.Player.orig_Destroy orig, Player self)
 	{
 		orig(self);
 		creditCWT.Remove(self);
 	}
 
-	private void Player_ClassMechanicsSaint(On.Player.orig_ClassMechanicsSaint orig, Player self)
+	private void ClassMechanicsSaintDisableHook(On.Player.orig_ClassMechanicsSaint orig, Player self)
 	{
 		if (self.SlugCatClass != Slugcat) orig(self);
 	}
 
-	private AbstractCreature RainWorldGame_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate(On.RainWorldGame.orig_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate orig, RainWorldGame self, bool player1, bool player2, bool player3, bool player4, WorldCoordinate location)
+	private AbstractCreature RoomSpawnPosFixHook(On.RainWorldGame.orig_SpawnPlayers_bool_bool_bool_bool_WorldCoordinate orig, RainWorldGame self, bool player1, bool player2, bool player3, bool player4, WorldCoordinate location)
 	{
 		// Anyone in the gallery region will spawn from the first node (will be a room entrance)
 		if (RainWorld.roomIndexToName.ContainsKey(location.room) && RainWorld.roomIndexToName[location.room].StartsWith("GR_"))
@@ -156,7 +167,7 @@ sealed class Plugin : BaseUnityPlugin
 		return orig(self, player1, player2, player3, player4, location);
 	}
 
-	private void AbstractCreature_RealizeInRoom(On.AbstractCreature.orig_RealizeInRoom orig, AbstractCreature self)
+	private void TentacleImmunityHook(On.AbstractCreature.orig_RealizeInRoom orig, AbstractCreature self)
 	{
 		if (self.creatureTemplate.type == CreatureTemplate.Type.Slugcat && self.state is PlayerState ps && ps.slugcatCharacter == Slugcat)
 			self.tentacleImmune = true; // no tentacles today
@@ -164,7 +175,7 @@ sealed class Plugin : BaseUnityPlugin
 		orig(self);
 	}
 
-	private void Bulb_Update(On.DaddyCorruption.Bulb.orig_Update orig, DaddyCorruption.Bulb self)
+	private void CorruptionCannotGrabMeHook(On.DaddyCorruption.Bulb.orig_Update orig, DaddyCorruption.Bulb self)
 	{
 		orig(self);
 		if (self.eatChunk?.owner is Player p && p.SlugCatClass == Slugcat)
@@ -173,14 +184,14 @@ sealed class Plugin : BaseUnityPlugin
 		}
 	}
 
-	private void DaddyCorruption_BulbNibbleAtChunk(On.DaddyCorruption.orig_BulbNibbleAtChunk orig, DaddyCorruption self, DaddyCorruption.Bulb bulb, BodyChunk chunk)
+	private void CorruptionCannotEatMeHook(On.DaddyCorruption.orig_BulbNibbleAtChunk orig, DaddyCorruption self, DaddyCorruption.Bulb bulb, BodyChunk chunk)
 	{
 		if (chunk.owner is Player p && p.SlugCatClass == Slugcat) return; // placed rot doesn't get dinner today
 
 		orig(self, bulb, chunk);
 	}
 
-	private CreatureTemplate.Relationship ArtificialIntelligence_StaticRelationship(On.ArtificialIntelligence.orig_StaticRelationship orig, ArtificialIntelligence self, AbstractCreature otherCreature)
+	private CreatureTemplate.Relationship NoRelationshipsHook(On.ArtificialIntelligence.orig_StaticRelationship orig, ArtificialIntelligence self, AbstractCreature otherCreature)
 	{
 		if (otherCreature.creatureTemplate.type == CreatureTemplate.Type.Slugcat && otherCreature.state is PlayerState ps && ps.slugcatCharacter == Slugcat)
 			return new(CreatureTemplate.Relationship.Type.DoesntTrack, 1f); // everything will not track (intended for stuck daddys)
@@ -188,12 +199,12 @@ sealed class Plugin : BaseUnityPlugin
 		return orig(self, otherCreature);
 	}
 
-	private bool MultiplayerUnlocks_ClassUnlocked(On.MultiplayerUnlocks.orig_ClassUnlocked orig, MultiplayerUnlocks self, SlugcatStats.Name classID)
+	private bool NoPlayInArenaHook(On.MultiplayerUnlocks.orig_ClassUnlocked orig, MultiplayerUnlocks self, SlugcatStats.Name classID)
 	{
 		return classID != Slugcat && orig(self, classID); // cannot play gallery slugcat in arena
 	}
 
-	private void RainCycle_Update(On.RainCycle.orig_Update orig, RainCycle self)
+	private void RainCycleFreezeHook(On.RainCycle.orig_Update orig, RainCycle self)
 	{
 		orig(self);
 		if (self.world?.region?.name == "GR" && self.timer > self.cycleLength / 2)
@@ -202,7 +213,7 @@ sealed class Plugin : BaseUnityPlugin
 		}
 	}
 
-	private string SaveState_GetStoryDenPosition(On.SaveState.orig_GetStoryDenPosition orig, SlugcatStats.Name slugcat, out bool isVanilla)
+	private string RandomSpawnRoomHook(On.SaveState.orig_GetStoryDenPosition orig, SlugcatStats.Name slugcat, out bool isVanilla)
 	{
 		if (slugcat == Slugcat)
 		{
@@ -219,7 +230,7 @@ sealed class Plugin : BaseUnityPlugin
 		return orig(slugcat, out isVanilla);
 	}
 
-	private void Player_SpitOutOfShortCut(On.Player.orig_SpitOutOfShortCut orig, Player self, IntVector2 pos, Room newRoom, bool spitOutAllSticks)
+	private void SaveSafePositionHook(On.Player.orig_SpitOutOfShortCut orig, Player self, IntVector2 pos, Room newRoom, bool spitOutAllSticks)
 	{
 		orig(self, pos, newRoom, spitOutAllSticks);
 
@@ -237,7 +248,7 @@ sealed class Plugin : BaseUnityPlugin
 		}
 	}
 
-	private void Player_NewRoom(On.Player.orig_NewRoom orig, Player self, Room newRoom)
+	private void UpdateVisitedRoomsHook(On.Player.orig_NewRoom orig, Player self, Room newRoom)
 	{
 		orig(self, newRoom);
 
@@ -248,7 +259,7 @@ sealed class Plugin : BaseUnityPlugin
 		}
 	}
 
-	private void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
+	private void PlayerAbilitiesHook(On.Player.orig_Update orig, Player self, bool eu)
 	{
 		orig(self, eu);
 
@@ -326,7 +337,7 @@ sealed class Plugin : BaseUnityPlugin
 		}
 	}
 
-	private void RainWorldGame_Update(On.RainWorldGame.orig_Update orig, RainWorldGame self)
+	private void PlayerRespawnHook(On.RainWorldGame.orig_Update orig, RainWorldGame self)
 	{
 		orig(self);
 		if (!self.IsStorySession) return;

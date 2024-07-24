@@ -57,7 +57,7 @@ namespace Gallery2024
 
         public void Activate()
         {
-            activeTimer = 80; // 2 seconds
+            activeTimer = 160; // 4 seconds
         }
 
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
