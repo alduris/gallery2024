@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using RWCustom;
 using UnityEngine;
 
@@ -12,7 +8,7 @@ namespace Gallery2024
     {
         public PlayerGraphics owner;
         private readonly int divs;
-        public Vector2[,,] clothPoints;
+        public Vector2[,,] clothPoints; // [x, y, i] where i = 0 -> pos, i = 1 -> lastPos, i = 2 -> vel
         public bool needsReset;
         public readonly int totalSprites = 2;
         private int startSprite;
@@ -47,53 +43,50 @@ namespace Gallery2024
                 needsReset = false;
             }
 
-            Vector2 bodyPos = Vector2.Lerp(owner.head.pos, owner.player.bodyChunks[1].pos, 0.75f);
+            Vector2 bodyPos = Vector2.Lerp(owner.head.pos, owner.player.bodyChunks[1].pos, 0.75f); // 75% between head and torso
             if (owner.player.bodyMode == Player.BodyModeIndex.Crawl)
             {
                 bodyPos += new Vector2(0f, 4f);
             }
-
-            Vector2 walkBob = default;
-            if (owner.player.bodyMode == Player.BodyModeIndex.Stand)
+            else if (owner.player.bodyMode == Player.BodyModeIndex.Stand)
             {
                 bodyPos += new Vector2(0f, Mathf.Sin(owner.player.animationFrame / 3f * Mathf.PI) * 2f);
-                walkBob = new Vector2(0f, -11f + Mathf.Sin(owner.player.animationFrame / 3f * Mathf.PI) * -2.5f);
             }
 
-            Vector2 dir = Custom.DirVec(owner.player.bodyChunks[1].pos, owner.player.bodyChunks[0].pos + Custom.DirVec(default(Vector2), owner.player.bodyChunks[0].vel) * 5f) * 1.6f;
+            Vector2 dir = Custom.DirVec(owner.player.bodyChunks[1].pos, owner.player.bodyChunks[0].pos) * 1.6f;
             Vector2 perp = Custom.PerpendicularVector(dir);
             for (int i = 0; i < divs; i++)
             {
                 for (int j = 0; j < divs; j++)
                 {
-                    Mathf.InverseLerp(0f, divs - 1, i);
-                    float t = Mathf.InverseLerp(0f, divs - 1, j);
+                    float u = Mathf.InverseLerp(0f, divs - 1, i);
+                    float v = Mathf.InverseLerp(0f, divs - 1, j);
                     clothPoints[i, j, 1] = clothPoints[i, j, 0];
                     clothPoints[i, j, 0] += clothPoints[i, j, 2];
-                    clothPoints[i, j, 2] *= 0.999f;
-                    clothPoints[i, j, 2].y -= 1.1f * owner.player.EffectiveRoomGravity;
+                    clothPoints[i, j, 2] *= 0.99f; // stiffness
+                    clothPoints[i, j, 2].y -= 1.1f * owner.player.EffectiveRoomGravity; // gravity effect
 
-                    Vector2 idealPos = IdealPosForPoint(i, j, bodyPos, dir, perp) + walkBob * (-1f * t);
-                    Vector3 rot = Vector3.Slerp(-dir, Custom.DirVec(bodyPos, idealPos), t) * (0.01f + 0.9f * t);
+                    Vector2 idealPos = IdealPosForPoint(i, j, bodyPos, dir, perp);
+                    Vector3 rot = Vector3.Slerp(-dir, Custom.DirVec(bodyPos, idealPos), v) * (0.01f + 0.9f * v);
                     clothPoints[i, j, 2] += new Vector2(rot.x, rot.y);
-                    float num = Vector2.Distance(clothPoints[i, j, 0], idealPos);
-                    float num2 = Mathf.Lerp(0f, 9f, t);
-                    Vector2 a = Custom.DirVec(clothPoints[i, j, 0], idealPos);
-                    if (num > num2)
+                    float dist = Vector2.Distance(clothPoints[i, j, 0], idealPos);
+                    float maxDist = Mathf.Lerp(0f, 1f, v); // strength of bounce ?
+                    Vector2 idealDir = Custom.DirVec(clothPoints[i, j, 0], idealPos);
+                    if (dist > maxDist)
                     {
-                        clothPoints[i, j, 0] -= (num2 - num) * a * (1f - t / 1.4f);
-                        clothPoints[i, j, 2] -= (num2 - num) * a * (1f - t / 1.4f);
+                        clothPoints[i, j, 0] -= (maxDist - dist) * idealDir * (1f - v / 1.4f);
+                        clothPoints[i, j, 2] -= (maxDist - dist) * idealDir * (1f - v / 1.4f);
                     }
                     for (int k = 0; k < 4; k++)
                     {
-                        IntVector2 intVector = new IntVector2(i, j) + Custom.fourDirections[k];
-                        if (intVector.x >= 0 && intVector.y >= 0 && intVector.x < divs && intVector.y < divs)
+                        IntVector2 neighbor = new IntVector2(i, j) + Custom.fourDirections[k];
+                        if (neighbor.x >= 0 && neighbor.y >= 0 && neighbor.x < divs && neighbor.y < divs)
                         {
-                            num = Vector2.Distance(clothPoints[i, j, 0], clothPoints[intVector.x, intVector.y, 0]);
-                            a = Custom.DirVec(clothPoints[i, j, 0], clothPoints[intVector.x, intVector.y, 0]);
-                            float num3 = Vector2.Distance(idealPos, IdealPosForPoint(intVector.x, intVector.y, bodyPos, dir, perp));
-                            clothPoints[i, j, 2] -= (num3 - num) * a * 0.05f;
-                            clothPoints[intVector.x, intVector.y, 2] += (num3 - num) * a * 0.05f;
+                            dist = Vector2.Distance(clothPoints[i, j, 0], clothPoints[neighbor.x, neighbor.y, 0]);
+                            idealDir = Custom.DirVec(clothPoints[i, j, 0], clothPoints[neighbor.x, neighbor.y, 0]);
+                            float neighborDist = Vector2.Distance(idealPos, IdealPosForPoint(neighbor.x, neighbor.y, bodyPos, dir, perp));
+                            clothPoints[i, j, 2] -= (neighborDist - dist) * idealDir * 0.05f;
+                            clothPoints[neighbor.x, neighbor.y, 2] += (neighborDist - dist) * idealDir * 0.05f;
                         }
                     }
                 }
@@ -102,9 +95,13 @@ namespace Gallery2024
 
         private Vector2 IdealPosForPoint(int x, int y, Vector2 bodyPos, Vector2 dir, Vector2 perp)
         {
-            float num = Mathf.InverseLerp(0f, divs - 1, x);
-            float t = Mathf.InverseLerp(0f, divs - 1, y);
-            return bodyPos + Mathf.Lerp(-1f, 1f, num) * perp * Mathf.Lerp(9f, 11f, t) + dir * Mathf.Lerp(8f, -9f, t) * (1f + Mathf.Sin((float)Math.PI * num) * 0.35f * Mathf.Lerp(-1f, 1f, t));
+            float u = Mathf.InverseLerp(0f, divs - 1, x);
+            float v = Mathf.InverseLerp(0f, divs - 1, y);
+            return bodyPos
+                + Mathf.Lerp(-1f, 1f, u) * perp * Mathf.Lerp(9f, 9f, v)
+                //                                 top width ^   ^ bottom width
+                + dir * Mathf.Lerp(8f, -1f, v) * (1f + Mathf.Sin(Mathf.PI * u) * 0.25f * Mathf.Lerp(-1f, 1f, v));
+                //      top height ^   ^ bottom height
         }
 
         public Color VestColor()
