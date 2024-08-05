@@ -69,6 +69,10 @@ sealed class Plugin : BaseUnityPlugin
 			On.RoomCamera.MoveCamera2 += RoomCamera_MoveCamera2;
 			On.RoomCamera.MoveCamera_Room_int += RoomCamera_MoveCamera_Room_int;
 
+			// Player graphics stuff
+			ExplorerGraphics.LoadAtlases();
+			ExplorerGraphics.Hooks.Apply();
+
 			Logger.LogInfo("Ready to explore!");
 		}
 		catch (Exception e)

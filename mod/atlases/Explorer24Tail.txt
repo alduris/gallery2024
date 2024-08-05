@@ -1,0 +1,17 @@
+{
+	"frames": {
+		"Explorer24Tail.png": {
+			"frame": {"x":0,"y":0,"w":120,"h":70},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":120,"h":70},
+			"sourceSize": {"w":120,"h":70}
+		}
+	},
+	"meta": {
+		"image": "Explorer24Tail.png",
+		"format": "RGBA8888",
+		"size": {"w":120,"h":70},
+		"scale": "1"
+	}
+}
