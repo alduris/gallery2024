@@ -58,8 +58,8 @@ namespace Gallery2024
 
                     tail.UVvertices[i] = uv;
                 }
-                newSprites.Add(tail);
                 tailMudSprite = initialLen + newSprites.Count;
+                newSprites.Add(tail);
             }
 
             // Vest
