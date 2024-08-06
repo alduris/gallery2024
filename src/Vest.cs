@@ -59,11 +59,11 @@ namespace Gallery2024
             {
                 for (int j = 0; j < divs; j++)
                 {
-                    float u = Mathf.InverseLerp(0f, divs - 1, i);
+                    // float u = Mathf.InverseLerp(0f, divs - 1, i);
                     float v = Mathf.InverseLerp(0f, divs - 1, j);
                     clothPoints[i, j, 1] = clothPoints[i, j, 0];
                     clothPoints[i, j, 0] += clothPoints[i, j, 2];
-                    clothPoints[i, j, 2] *= 0.99f; // stiffness
+                    clothPoints[i, j, 2] *= 0.95f; // stiffness
                     clothPoints[i, j, 2].y -= 1.1f * owner.player.EffectiveRoomGravity; // gravity effect
 
                     Vector2 idealPos = IdealPosForPoint(i, j, bodyPos, dir, perp);
@@ -98,7 +98,7 @@ namespace Gallery2024
             float u = Mathf.InverseLerp(0f, divs - 1, x);
             float v = Mathf.InverseLerp(0f, divs - 1, y);
             return bodyPos
-                + Mathf.Lerp(-1f, 1f, u) * perp * Mathf.Lerp(9f, 9f, v)
+                + Mathf.Lerp(-1f, 1f, u) * perp * 1.2f * Mathf.Lerp(9f, 9f, v)
                 //                                 top width ^   ^ bottom width
                 + dir * Mathf.Lerp(8f, -1f, v) * (1f + Mathf.Sin(Mathf.PI * u) * 0.25f * Mathf.Lerp(-1f, 1f, v));
                 //      top height ^   ^ bottom height
@@ -112,7 +112,7 @@ namespace Gallery2024
         public void InitiateSprites(int startSprite, List<FSprite> sprites)
         {
             this.startSprite = startSprite;
-            sprites.Add(TriangleMesh.MakeGridMesh("Futile_White", divs - 1));
+            sprites.Add(TriangleMesh.MakeGridMesh("Explorer24VestUnder", divs - 1));
             sprites.Add(TriangleMesh.MakeGridMesh("Explorer24Vest", divs - 1));
             for (int i = 0; i < divs; i++)
             {
@@ -151,12 +151,45 @@ namespace Gallery2024
             {
                 return;
             }
-            for (int i = 0; i < divs; i++)
+
+            float lookOffset;
+            Vector2 upperBodyDrawPos = Vector2.Lerp(owner.drawPositions[0, 1], owner.drawPositions[0, 0], timeStacker);
+            Vector2 lowerBodyDrawPos = Vector2.Lerp(owner.drawPositions[1, 1], owner.drawPositions[1, 0], timeStacker);
+            if (owner.player.bodyMode == Player.BodyModeIndex.Stand && owner.player.input[0].x != 0)
             {
-                for (int j = 0; j < divs; j++)
+                // "Borrow" the calculations the code does to figure out which direction to put the player's face
+                Vector2 headPos = Vector2.Lerp(owner.head.lastPos, owner.head.pos, timeStacker);
+
+                Vector2 lookDir = (headPos - Vector2.Lerp(lowerBodyDrawPos, upperBodyDrawPos, 0.5f)).normalized;
+                lookOffset = lookDir.x > 0 ? 1f : -1f;
+            }
+            else if (owner.player.bodyMode == Player.BodyModeIndex.Crawl)
+            {
+                // just always "look" in a certain direction because it's only correct in one direction if I use the stand code
+                lookOffset = 1f;
+            }
+            else
+            {
+                // Rotate in direction of looking
+                lookOffset = Vector2.Lerp(owner.lastLookDir, owner.lookDirection, timeStacker).normalized.x;
+            }
+
+            for (int x = 0; x < divs; x++)
+            {
+                float u = x / (divs - 1f);
+                for (int y = 0; y < divs; y++)
                 {
-                    (sLeaser.sprites[startSprite] as TriangleMesh).MoveVertice(i * divs + j, Vector2.Lerp(clothPoints[i, j, 1], clothPoints[i, j, 0], timeStacker) - camPos);
-                    (sLeaser.sprites[startSprite + 1] as TriangleMesh).MoveVertice(i * divs + j, Vector2.Lerp(clothPoints[i, j, 1], clothPoints[i, j, 0], timeStacker) - camPos);
+                    float v = y / (divs - 1f);
+                    var clothPoint = Vector2.Lerp(clothPoints[x, y, 1], clothPoints[x, y, 0], timeStacker);
+                    Vector2 offsetDir = owner.player.bodyMode == Player.BodyModeIndex.Crawl ? Vector2.down : Vector2.right;
+                    clothPoint += offsetDir * (lookOffset * Mathf.Sin(Mathf.PI * u) * 5f); // account for look direction
+                    if (owner.player.bodyMode == Player.BodyModeIndex.Stand && owner.player.input[0].x != 0) // account for run direction or something
+                    {
+                        var bodyAngle = (upperBodyDrawPos - lowerBodyDrawPos);
+                        clothPoint += Mathf.Lerp(1f, -1.5f, v) * Vector2.right * bodyAngle.x * Mathf.Pow(bodyAngle.normalized.y, 2f) * 0.65f;
+                    }
+                    (sLeaser.sprites[startSprite] as TriangleMesh).MoveVertice(x * divs + y, clothPoint - camPos);
+                    (sLeaser.sprites[startSprite + 1] as TriangleMesh).MoveVertice(x * divs + y, clothPoint - camPos);
                 }
             }
         }

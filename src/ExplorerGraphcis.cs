@@ -128,6 +128,13 @@ namespace Gallery2024
 
             // Vest
             vest.DrawSprite(sLeaser, rCam, timeStacker, camPos);
+
+            // Face
+            string faceName = "Explorer24" + sLeaser.sprites[9].element.name;
+            if (Futile.atlasManager.DoesContainElementWithName(faceName))
+            {
+                sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName(faceName);
+            }
         }
 
         public void Update(PlayerGraphics self)
@@ -151,6 +158,7 @@ namespace Gallery2024
         {
             Futile.atlasManager.LoadAtlas("atlases/Explorer24Tail");
             Futile.atlasManager.LoadAtlas("atlases/Explorer24Vest");
+            Futile.atlasManager.LoadAtlas("atlases/Explorer24Eyes");
         }
 
         public static class Hooks

@@ -6,12 +6,19 @@
 			"trimmed": false,
 			"spriteSourceSize": {"x":0,"y":0,"w":40,"h":40},
 			"sourceSize": {"w":40,"h":40}
+		},
+		"Explorer24VestUnder.png": {
+			"frame": {"x":40,"y":0,"w":40,"h":40},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":40,"h":40},
+			"sourceSize": {"w":40,"h":40}
 		}
 	},
 	"meta": {
 		"image": "Explorer24Vest.png",
 		"format": "RGBA8888",
-		"size": {"w":40,"h":40},
+		"size": {"w":80,"h":40},
 		"scale": "1"
 	}
 }

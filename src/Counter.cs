@@ -147,7 +147,7 @@ namespace Gallery2024
 
             const float RADIUS = CIRCLE_SCALE / 2 + 5f;
             var textFac = RADIUS * sinAFac * 0.25f + RADIUS * 0.75f;
-            progLabel.SetPosition(posFac + new Vector2(0f, textFac + 30f * progLabel.scale)); // 30 = large text size
+            progLabel.SetPosition(posFac + new Vector2(0f, textFac + 30f * progLabel.scale + (ModManager.JollyCoop ? 10f : 0f))); // 30 = large text size
             authorLabel.SetPosition(posFac - new Vector2(0f, textFac + 30f * authorLabel.scale));
             promptLabel.SetPosition(posFac - new Vector2(0f, textFac + 30f * authorLabel.scale + 15f * promptLabel.scale)); // 15 = small text size, 6 = margin
 

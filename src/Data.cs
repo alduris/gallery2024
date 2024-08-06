@@ -26,7 +26,7 @@ namespace Gallery2024
             { "GR_Alduris-2b", new("Alduris", "Growth") },
             { "GR_Alduris-3b", new("Alduris", "Monolith") },
             { "GR_Alduris-4b", new("Alduris", "Diseased") },
-            { "GR_alekus-1b", new("alekus", "Suspended") },
+            { "GR_alekus-1b", new("Alekus", "Suspended") },
             { "GR_alexavailable-1b", new("AlexAvailable", "Bridge/Suspended") },
             { "GR_ATOM-3b", new("Atom", "Monolith") },
             { "GR_Ax3lotI-1a", new("Ax3lotI", "Bridge") },

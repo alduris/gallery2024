@@ -269,6 +269,26 @@ sealed class Plugin : BaseUnityPlugin
 
 		if (self.SlugCatClass == Slugcat && self.room != null)
 		{
+			if (self.room != null && self.room.game.IsStorySession && self.room.world.name != "GR")
+			{
+				if (self.State.alive || Random.value < 0.02f)
+				{
+					self.Die();
+					var launchDir = Custom.RNV() * 100f;
+
+                    for (int i = 0; i < self.bodyChunks.Length; i++)
+					{
+						self.bodyChunks[i].vel += launchDir;
+					}
+					var pos = self.firstChunk.pos;
+                    self.room.AddObject(new Explosion(self.room, self, pos, 7, Random.Range(200f, 300f), 6f, 2f, 280f, 0.25f, self, 1f, 160f, 1f));
+                    self.room.AddObject(new Explosion.ExplosionLight(pos, 280f, 1f, 7, self.ShortCutColor()));
+                    self.room.AddObject(new Explosion.ExplosionLight(pos, 230f, 1f, 3, new Color(1f, 1f, 1f)));
+                    self.room.AddObject(new ExplosionSpikes(self.room, pos, 14, 30f, 9f, 7f, 170f, self.ShortCutColor()));
+                    self.room.AddObject(new ShockWave(pos, 330f, 0.045f, 5, false));
+					return;
+                }
+			}
 			self.airInLungs = 1f;
 
 			// Room credit
@@ -351,7 +371,7 @@ sealed class Plugin : BaseUnityPlugin
 			var player = self.Players[i];
 			var state = player.state as PlayerState;
 
-			if (state.slugcatCharacter == Slugcat && (state.dead || state.permaDead) && lastSafePosCWT.TryGetValue(player, out var box))
+			if (state.slugcatCharacter == Slugcat && (state.dead || state.permaDead) && lastSafePosCWT.TryGetValue(player, out var box) && (player.Room?.world?.name ?? "GR") == "GR")
 			{
 				// Destroy the player for realz
 				var safePos = box.Value;
