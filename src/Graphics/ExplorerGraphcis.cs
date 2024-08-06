@@ -5,14 +5,14 @@ using RWCustom;
 using SlugBase.DataTypes;
 using UnityEngine;
 
-namespace Gallery2024
+namespace Gallery2024.Graphics
 {
     public class ExplorerGraphics
     {
         internal static ConditionalWeakTable<PlayerGraphics, ExplorerGraphics> grafCWT = new();
 
         public static readonly Color DefaultBodyColor = Custom.hexToColor("c6c6c6");
-        public static readonly Color DefaultMudColor =  Custom.hexToColor("754848");
+        public static readonly Color DefaultMudColor = Custom.hexToColor("754848");
         public static readonly Color DefaultVestColor = Custom.hexToColor("e8a240");
 
         private int tailMudSprite = -1;

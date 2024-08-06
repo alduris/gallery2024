@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 using BepInEx;
 using BepInEx.Logging;
+using Gallery2024.Graphics;
 using RWCustom;
 using UnityEngine;
 using Random = UnityEngine.Random;

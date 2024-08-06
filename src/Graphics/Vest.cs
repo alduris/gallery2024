@@ -2,7 +2,7 @@
 using RWCustom;
 using UnityEngine;
 
-namespace Gallery2024
+namespace Gallery2024.Graphics
 {
     internal class Vest
     {
@@ -101,7 +101,7 @@ namespace Gallery2024
                 + Mathf.Lerp(-1f, 1f, u) * perp * 1.2f * Mathf.Lerp(9f, 9f, v)
                 //                                 top width ^   ^ bottom width
                 + dir * Mathf.Lerp(8f, -1f, v) * (1f + Mathf.Sin(Mathf.PI * u) * 0.25f * Mathf.Lerp(-1f, 1f, v));
-                //      top height ^   ^ bottom height
+            //      top height ^   ^ bottom height
         }
 
         public Color VestColor()
@@ -185,7 +185,7 @@ namespace Gallery2024
                     clothPoint += offsetDir * (lookOffset * Mathf.Sin(Mathf.PI * u) * 5f); // account for look direction
                     if (owner.player.bodyMode == Player.BodyModeIndex.Stand && owner.player.input[0].x != 0) // account for run direction or something
                     {
-                        var bodyAngle = (upperBodyDrawPos - lowerBodyDrawPos);
+                        var bodyAngle = upperBodyDrawPos - lowerBodyDrawPos;
                         clothPoint += Mathf.Lerp(1f, -1.5f, v) * Vector2.right * bodyAngle.x * Mathf.Pow(bodyAngle.normalized.y, 2f) * 0.65f;
                     }
                     (sLeaser.sprites[startSprite] as TriangleMesh).MoveVertice(x * divs + y, clothPoint - camPos);
