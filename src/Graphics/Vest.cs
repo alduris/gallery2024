@@ -101,7 +101,7 @@ namespace Gallery2024.Graphics
                 + Mathf.Lerp(-1f, 1f, u) * perp * 1.2f * Mathf.Lerp(9f, 9f, v)
                 //                                 top width ^   ^ bottom width
                 + dir * Mathf.Lerp(8f, -1f, v) * (1f + Mathf.Sin(Mathf.PI * u) * 0.25f * Mathf.Lerp(-1f, 1f, v));
-            //      top height ^   ^ bottom height
+            //          top height ^   ^ bottom height
         }
 
         public Color VestColor()
