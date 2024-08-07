@@ -16,7 +16,7 @@ namespace Gallery2024.Graphics
         public static readonly Color DefaultVestColor = Custom.hexToColor("e8a240");
 
         private int tailMudSprite = -1;
-        private Vest vest;
+        private List<IPlayerGraphicsExtension> extensions = [];
 
         private WeakReference<RoomCamera.SpriteLeaser> sLeaserRef;
         public ExplorerGraphics(RoomCamera.SpriteLeaser leaser)
@@ -63,8 +63,14 @@ namespace Gallery2024.Graphics
             }
 
             // Vest
-            vest = new Vest(self);
+            var vest = new Vest(self);
             vest.InitiateSprites(initialLen + newSprites.Count, newSprites);
+            extensions.Add(vest);
+
+            // Wings
+            var wings = new Wings(self);
+            wings.InitiateSprites(initialLen + newSprites.Count, newSprites);
+            extensions.Add(wings);
 
             // Add new sprites to sprite leaser
             Array.Resize(ref sLeaser.sprites, initialLen + newSprites.Count);
@@ -84,7 +90,11 @@ namespace Gallery2024.Graphics
 
             if (tailMudSprite > -1)
                 (newContainer ?? sLeaser.sprites[2].container).AddChild(sLeaser.sprites[tailMudSprite]);
-            vest.AddToContainer(sLeaser, rCam, newContainer);
+            
+            foreach (var ext in extensions)
+            {
+                ext.AddToContainer(sLeaser, rCam, newContainer);
+            }
         }
 
         public void ApplyPalette(PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
@@ -100,8 +110,11 @@ namespace Gallery2024.Graphics
             sLeaser.sprites[8].color = mudColor; // right hand
             if (tailMudSprite > -1) sLeaser.sprites[tailMudSprite].color = mudColor;
 
-            // Vest
-            vest.ApplyPalette(sLeaser, rCam, palette);
+            // Extensions
+            foreach (var ext in extensions)
+            {
+                ext.ApplyPalette(sLeaser, rCam, palette);
+            }
         }
 
         public void DrawSprites(PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
@@ -126,8 +139,11 @@ namespace Gallery2024.Graphics
                 mudTail.MoveInFrontOfOtherNode(origTail);
             }
 
-            // Vest
-            vest.DrawSprite(sLeaser, rCam, timeStacker, camPos);
+            // Extensions
+            foreach (var ext in extensions)
+            {
+                ext.DrawSprites(sLeaser, rCam, timeStacker, camPos);
+            }
 
             // Face
             string faceName = "Explorer24" + sLeaser.sprites[9].element.name;
@@ -139,7 +155,10 @@ namespace Gallery2024.Graphics
 
         public void Update(PlayerGraphics self)
         {
-            vest.Update();
+            foreach (var ext in extensions)
+            {
+                ext.Update();
+            }
         }
 
         public static Color GetColor(PlayerGraphics graf, string name, Color defaultColor)

@@ -311,7 +311,12 @@ sealed class Plugin : BaseUnityPlugin
 				self.monkAscension = OI.AllowFlight.Value && !self.monkAscension;
 				self.wantToJump = 0;
 				self.PlayHUDSound(self.monkAscension ? SoundID.SS_AI_Give_The_Mark_Boom : SoundID.HUD_Pause_Game);
-			}
+                // self.room.AddObject(new ShockWave(self.mainBodyChunk.pos, 160f, 0.07f, 9, false));
+                for (int i = 0; i < 12; i++)
+                {
+                    self.room.AddObject(new WaterDrip(self.bodyChunks[1].pos, Custom.DegToVec(Random.value * 360f) * Mathf.Lerp(5f, 20f, Random.value), false));
+                }
+            }
 
 			if (self.monkAscension)
 			{

@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RWCustom;
 using UnityEngine;
 
 namespace Gallery2024.Graphics
 {
-    internal class Vest
+    internal class Vest : IPlayerGraphicsExtension
     {
         public PlayerGraphics owner;
         private readonly int divs;
         public Vector2[,,] clothPoints; // [x, y, i] where i = 0 -> pos, i = 1 -> lastPos, i = 2 -> vel
         public bool needsReset;
-        public readonly int totalSprites = 2;
         private int startSprite;
 
         public Vest(PlayerGraphics owner)
@@ -144,9 +144,9 @@ namespace Gallery2024.Graphics
             }
         }
 
-        public void DrawSprite(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+        public void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
-            sLeaser.sprites[startSprite].isVisible = owner.player.room != null;
+            sLeaser.sprites[startSprite].isVisible = sLeaser.sprites[startSprite + 1].isVisible = owner.player.room != null;
             if (!sLeaser.sprites[startSprite].isVisible)
             {
                 return;
