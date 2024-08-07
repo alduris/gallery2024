@@ -5,6 +5,8 @@ using System.Security.Permissions;
 using BepInEx;
 using BepInEx.Logging;
 using Gallery2024.Graphics;
+using JollyCoop;
+using MonoMod.Cil;
 using RWCustom;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -65,6 +67,9 @@ sealed class Plugin : BaseUnityPlugin
 			LoadShaders(self);
 			On.HUD.Map.OnMapConnection.Update += FadeMapConnectionHook;
 			On.HUD.Map.Update += GRMapShaderHook;
+            On.HUD.Map.ctor += Map_ctor;
+            On.HUD.Map.FadeInMarker.SetInvisible += FadeInMarker_SetInvisible;
+            On.HUD.Map.ResetNotRevealedMarkers += Map_ResetNotRevealedMarkers;
 			
 			// L4 fix stolen from mergefix
 			On.RoomCamera.MoveCamera2 += RoomCamera_MoveCamera2;
@@ -84,6 +89,26 @@ sealed class Plugin : BaseUnityPlugin
 		OI = new Options();
 		MachineConnector.SetRegisteredOI(MOD_ID, OI);
 	}
+
+    private void Map_ResetNotRevealedMarkers(On.HUD.Map.orig_ResetNotRevealedMarkers orig, HUD.Map self)
+    {
+		orig(self);
+		self.notRevealedFadeMarkers = self.notRevealedFadeMarkers.Where(x => x is not GRRoomMarker).ToList();
+    }
+
+    private void FadeInMarker_SetInvisible(On.HUD.Map.FadeInMarker.orig_SetInvisible orig, HUD.Map.FadeInMarker self)
+    {
+		if (self is not GRRoomMarker) orig(self);
+    }
+
+    private void Map_ctor(On.HUD.Map.orig_ctor orig, HUD.Map self, HUD.HUD hud, HUD.Map.MapData mapData)
+    {
+        orig(self, hud, mapData);
+		for (int i = 0; i < mapData.roomIndices.Length; i++)
+		{
+			self.mapObjects.Add(new GRRoomMarker(self, mapData.roomIndices[i]));
+		}
+    }
 
     private void LoadShaders(RainWorld rainWorld)
 	{

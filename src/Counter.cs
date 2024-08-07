@@ -92,6 +92,23 @@ namespace Gallery2024
             }
         }
 
+        public override void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette palette)
+        {
+            base.ApplyPalette(sLeaser, rCam, palette);
+
+            bool done = Data.VisitedCount >= Data.TotalRoomCount;
+            if (done)
+            {
+                // VectorCircleFadable shader: r = 4/255 -> gold color
+                sLeaser.sprites[0].color = new Color(4f / 255f, 0f, 0f);
+                sLeaser.sprites[1].color = new Color(4f / 255f, 0f, 0f);
+                sLeaser.sprites[2].color = RainWorld.SaturatedGold;
+                progLabel.color = RainWorld.SaturatedGold;
+                authorLabel.color = RainWorld.SaturatedGold;
+                promptLabel.color = RainWorld.SaturatedGold;
+            }
+        }
+
         public override void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             base.DrawSprites(sLeaser, rCam, timeStacker, camPos);
@@ -112,6 +129,7 @@ namespace Gallery2024
             var activeFac = Mathf.Lerp(lastActive, active, timeStacker) / ACTIVATION_TIME;
             var sinAFac = Mathf.Sin(activeFac * Mathf.PI / 2);
             var sigAFac = 1f / (1f + Mathf.Exp(-5 * (activeFac - 0.5f)));
+            bool done = Data.VisitedCount >= Data.TotalRoomCount;
 
             // Counter circle
             const float CIRCLE_SCALE = 80f;
@@ -123,7 +141,7 @@ namespace Gallery2024
             for (int i = 0; i < 2; i++)
             {
                 sLeaser.sprites[i].scale = (i == 0) ? innerScale : scale;
-                sLeaser.sprites[i].color = new Color(0f, 0f, sinAFac);
+                sLeaser.sprites[i].color = new Color(done ? 4f / 255f : 0f, 0f, sinAFac);
                 sLeaser.sprites[i].alpha = 2f / Mathf.Max(2f, sLeaser.sprites[i].scale * 10f);
             }
             sLeaser.sprites[2].scale = progScale;

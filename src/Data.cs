@@ -253,6 +253,12 @@ namespace Gallery2024
             return _visited.Count; // return how many rooms have been visited
         }
 
+        public static bool IsVisited(string room)
+        {
+            PullRooms();
+            return Rooms.ContainsKey(room) && _visited.Contains(room);
+        }
+
         public static RoomData GetRoomData(string room)
         {
             if (Rooms.TryGetValue(room, out var roomData))
