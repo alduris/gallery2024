@@ -189,6 +189,16 @@ namespace Gallery2024.Graphics
                 On.PlayerGraphics.ApplyPalette += PlayerGraphics_ApplyPalette;
                 On.PlayerGraphics.DrawSprites += PlayerGraphics_DrawSprites;
                 On.PlayerGraphics.Update += PlayerGraphics_Update;
+                On.TailSegment.ctor += TailSegment_ctor;
+            }
+
+            private static void TailSegment_ctor(On.TailSegment.orig_ctor orig, TailSegment self, GraphicsModule ow, float rd, float cnRd, TailSegment cnSeg, float sfFric, float aFric, float affectPrevious, bool pullInPreviousPosition)
+            {
+                orig(self, ow, rd, cnRd, cnSeg, sfFric, aFric, affectPrevious, pullInPreviousPosition);
+                if (ow is PlayerGraphics graf && graf.player.SlugCatClass == Plugin.Slugcat)
+                {
+                    self.connectionRad *= 0.75f;
+                }
             }
 
             private static void PlayerGraphics_Update(On.PlayerGraphics.orig_Update orig, PlayerGraphics self)
