@@ -6,7 +6,7 @@
 		"color": "c6c6c6",
 		"custom_colors": [
 			{ "name": "Body", "story": "c6c6c6" },
-			{ "name": "Eyes", "story": "000000" },
+			{ "name": "Eyes", "story": "010101" },
 			{ "name": "Mud",  "story": "754848" },
 			{ "name": "Vest", "story": "e8a240" }
 		],

@@ -5,8 +5,9 @@ using System.Security.Permissions;
 using BepInEx;
 using BepInEx.Logging;
 using Gallery2024.Graphics;
-using JollyCoop;
+using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using MonoMod.RuntimeDetour;
 using RWCustom;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -62,12 +63,14 @@ sealed class Plugin : BaseUnityPlugin
 			On.Player.Destroy += DestroyCreditsHook;
 			On.HUD.FoodMeter.Update += NoShowFoodMeterHook;
             On.HUD.KarmaMeter.Update += NoShowKarmaMeterHook;
+            On.Menu.SlugcatSelectMenu.UpdateStartButtonText += StartButtonRenameHook;
+			_ = new ILHook(typeof(HUD.Map).GetProperty(nameof(HUD.Map.discoverTexture)).GetSetMethod(), MapDiscoverTextureMemLeakFixQuestionMarkHook);
 			
 			// Map stuff
 			LoadShaders(self);
 			On.HUD.Map.OnMapConnection.Update += FadeMapConnectionHook;
 			On.HUD.Map.Update += GRMapShaderHook;
-            On.HUD.Map.ctor += Map_ctor;
+            On.HUD.Map.ctor += CreateMapMarkers;
             On.HUD.Map.FadeInMarker.SetInvisible += FadeInMarker_SetInvisible;
             On.HUD.Map.ResetNotRevealedMarkers += Map_ResetNotRevealedMarkers;
 			
@@ -90,6 +93,29 @@ sealed class Plugin : BaseUnityPlugin
 		MachineConnector.SetRegisteredOI(MOD_ID, OI);
 	}
 
+	private void MapDiscoverTextureMemLeakFixQuestionMarkHook(ILContext il)
+	{
+		// You'd think I could just use a normal Hook, not an ILHook. Unfortunately fuck you, the Hook implementation is broken for property setters.
+		var c = new ILCursor(il);
+		c.Emit(OpCodes.Ldarg_0);
+		c.EmitDelegate((HUD.Map self) =>
+		{
+			if (self.hud.rainWorld.progression.mapDiscoveryTextures.TryGetValue(self.mapData.regionName, out var oldTex))
+			{
+				Destroy(oldTex);
+			}
+		});
+	}
+
+    private void StartButtonRenameHook(On.Menu.SlugcatSelectMenu.orig_UpdateStartButtonText orig, Menu.SlugcatSelectMenu self)
+    {
+		orig(self);
+		if (self.slugcatPages[self.slugcatPageIndex].slugcatNumber == Slugcat)
+		{
+			self.startButton.menuLabel.text = self.Translate("PLAY");
+		}
+    }
+
     private void Map_ResetNotRevealedMarkers(On.HUD.Map.orig_ResetNotRevealedMarkers orig, HUD.Map self)
     {
 		orig(self);
@@ -101,10 +127,13 @@ sealed class Plugin : BaseUnityPlugin
 		if (self is not GRRoomMarker) orig(self);
     }
 
-    private void Map_ctor(On.HUD.Map.orig_ctor orig, HUD.Map self, HUD.HUD hud, HUD.Map.MapData mapData)
+    private void CreateMapMarkers(On.HUD.Map.orig_ctor orig, HUD.Map self, HUD.HUD hud, HUD.Map.MapData mapData)
     {
         orig(self, hud, mapData);
-		for (int i = 0; i < mapData.roomIndices.Length; i++)
+
+        if (self.RegionName != "GR") return;
+
+        for (int i = 0; i < mapData.roomIndices.Length; i++)
 		{
 			self.mapObjects.Add(new GRRoomMarker(self, mapData.roomIndices[i]));
 		}
@@ -252,6 +281,14 @@ sealed class Plugin : BaseUnityPlugin
 			Random.InitState((int)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds()); // I hope this doesn't crash due to casting errors after 03:14:07 UTC on 19 January 2038
 			isVanilla = false;
 			string room = Data.Rooms.Keys.ToArray()[Random.Range(0, Data.Rooms.Count)];
+			if (Data.IsVisited(room) && OI.AlwaysNewRoom.Value)
+			{
+				var possibleRooms = Data.Rooms.Keys.Where(x => !Data.IsVisited(x)).ToArray();
+				if (possibleRooms.Length > 0)
+				{
+					room = possibleRooms[Random.Range(0, possibleRooms.Length)];
+				}
+			}
 			Data.UpdateVisited(room);
 			Random.state = state;
 			return room;

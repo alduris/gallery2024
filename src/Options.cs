@@ -7,6 +7,7 @@ namespace Gallery2024
     {
         public Configurable<bool> StreamMode;
         public Configurable<bool> AllowFlight;
+        public Configurable<bool> AlwaysNewRoom;
 
         public Configurable<string> VisitedRooms;
 
@@ -14,6 +15,7 @@ namespace Gallery2024
         {
             StreamMode = config.Bind("StreamMode", false);
             AllowFlight = config.Bind("AllowFlilght", true);
+            AlwaysNewRoom = config.Bind("AlwaysNewRoom", true);
             VisitedRooms = config.Bind("RoomSave", "[]");
         }
 
@@ -22,16 +24,18 @@ namespace Gallery2024
             Tabs = [new(this)];
             var tab = Tabs[0];
 
-            var resetButton = new OpHoldButton(new Vector2(10f, 500f), new Vector2(80f, 24f), "RESET");
-            resetButton.OnPressDone += ResetButton_OnPressDone;
+            OpHoldButton resetButton;
 
             tab.AddItems(
                 new OpCheckBox(StreamMode, new(10f, 560f)) { description = "Always show credits" },
                 new OpLabel(40f, 560f, "Always show credits", false),
                 new OpCheckBox(AllowFlight, new(10f, 530f)) { description = "Allow flight" },
                 new OpLabel(40f, 530f, "Allow flight", false),
-                resetButton
+                new OpCheckBox(AlwaysNewRoom, new(10f, 500f)) { description = "Always spawn in new room, if any unvisited" },
+                new OpLabel(40f, 500f, "Always spawn in unvisited room", false),
+                resetButton = new OpHoldButton(new Vector2(10f, 470f), new Vector2(120f, 24f), "RESET PROGRESS")
             );
+            resetButton.OnPressDone += ResetButton_OnPressDone;
         }
 
         private void ResetButton_OnPressDone(UIfocusable trigger)
