@@ -9,6 +9,10 @@ namespace Gallery2024.Graphics
 {
     internal class Wings : IPlayerGraphicsExtension
     {
+        const int TIME_SWITCH = 12;
+        const float ALPHA_RATE = 1f / 10f;
+        const float FLICKER_CHANCE = 1f / 280f;
+
         public PlayerGraphics owner;
         public int startSprite;
 
@@ -64,16 +68,16 @@ namespace Gallery2024.Graphics
                 {
                     wingData[i, j, 1] = wingData[i, j, 0];
 
-                    if (timeSinceSwitch < 15)
+                    if (timeSinceSwitch < TIME_SWITCH)
                     {
-                        if ((!flying || wingData[i, j, 2] == -1f) && Random.value < Custom.LerpMap(timeSinceSwitch, 0, 15, 0.25f, 0.99f))
+                        if ((!flying || wingData[i, j, 2] == -1f) && Random.value < Custom.LerpMap(timeSinceSwitch, 0, TIME_SWITCH, 0.25f, 0.99f))
                             wingData[i, j, 2] = flying ? (Random.value < 0.95f ? 1f : 0f) : -1f;
                     }
                     else if (wingData[i, j, 2] != -1f)
                     {
                         if (flying)
                         {
-                            if (wingData[i, j, 2] == 1f && Random.value < 1f / 180f)
+                            if (wingData[i, j, 2] == 1f && Random.value < FLICKER_CHANCE)
                             {
                                 wingData[i, j, 2] = 0f;
                             }
@@ -88,14 +92,13 @@ namespace Gallery2024.Graphics
                         }
                     }
 
-                    const float RATE = 1f / 10f;
                     if (wingData[i, j, 2] == -1f)
                     {
-                        wingData[i, j, 0] = Mathf.Max(0f, wingData[i, j, 0] - RATE);
+                        wingData[i, j, 0] = Mathf.Max(0f, wingData[i, j, 0] - ALPHA_RATE);
                     }
                     else if (wingData[i, j, 2] == 1f)
                     {
-                        wingData[i, j, 0] = Mathf.Min(1f, wingData[i, j, 0] + RATE);
+                        wingData[i, j, 0] = Mathf.Min(1f, wingData[i, j, 0] + ALPHA_RATE);
                     }
                     else
                     {

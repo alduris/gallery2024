@@ -75,6 +75,7 @@ namespace Gallery2024
             { "GR_Inspectnerd-3b", new("Inspectnerd", "Monolith") },
             { "GR_Inspectnerd-4a", new("Inspectnerd", "Respite") },
             { "GR_Inspectnerd-4b", new("Inspectnerd", "Diseased") },
+            { "GR_Isbjorn52-3a", new("Isbjorn52", "Shrouded Facility") },
             { "GR_Iswto-1b", new("Iswto", "Suspended") },
             { "GR_Iswto-2b", new("Iswto", "Growth") },
             { "GR_Iswto-3b", new("Iswto", "Monolith") },

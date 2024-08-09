@@ -17,7 +17,7 @@
 		"throw_skill": 2,
 		"back_spear": true,
 		"the_mark": true,
-		"the_glow": true,
+		"the_glow": false,
 		"expedition_enabled": false,
 		"select_menu_scene": "Slugcat_Gallery2024"
 	}
