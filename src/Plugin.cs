@@ -355,7 +355,7 @@ sealed class Plugin : BaseUnityPlugin
 			self.airInLungs = 1f;
 
 			// Room credit
-			if (self.input[0].mp)
+			if (self.input[0].mp || OI.AlwaysCredits.Value)
 			{
 				if (!creditCWT.TryGetValue(self, out Counter counter) || counter.slatedForDeletetion)
 				{

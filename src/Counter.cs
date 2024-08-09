@@ -58,6 +58,10 @@ namespace Gallery2024
         public void Activate()
         {
             activeTimer = 160; // 4 seconds
+            if (Plugin.OI.AlwaysCredits.Value)
+            {
+                active = ACTIVATION_TIME;
+            }
         }
 
         public override void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
