@@ -64,6 +64,7 @@ sealed class Plugin : BaseUnityPlugin
 			On.HUD.FoodMeter.Update += NoShowFoodMeterHook;
             On.HUD.KarmaMeter.Update += NoShowKarmaMeterHook;
             On.Menu.SlugcatSelectMenu.UpdateStartButtonText += StartButtonRenameHook;
+            On.Menu.SlugcatSelectMenu.StartGame += RestartGameHook;
 			_ = new ILHook(typeof(HUD.Map).GetProperty(nameof(HUD.Map.discoverTexture)).GetSetMethod(), MapDiscoverTextureMemLeakFixQuestionMarkHook);
 			
 			// Map stuff
@@ -93,7 +94,16 @@ sealed class Plugin : BaseUnityPlugin
 		MachineConnector.SetRegisteredOI(MOD_ID, OI);
 	}
 
-	private void MapDiscoverTextureMemLeakFixQuestionMarkHook(ILContext il)
+    private void RestartGameHook(On.Menu.SlugcatSelectMenu.orig_StartGame orig, Menu.SlugcatSelectMenu self, SlugcatStats.Name storyGameCharacter)
+    {
+        if (storyGameCharacter == Slugcat)
+		{
+			self.restartChecked = true;
+		}
+		orig(self, storyGameCharacter);
+    }
+
+    private void MapDiscoverTextureMemLeakFixQuestionMarkHook(ILContext il)
 	{
 		// You'd think I could just use a normal Hook, not an ILHook. Unfortunately fuck you, the Hook implementation is broken for property setters.
 		var c = new ILCursor(il);

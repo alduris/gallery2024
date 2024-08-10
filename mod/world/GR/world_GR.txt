@@ -188,7 +188,7 @@ GR_RexNecroMachina-4b : GR_Bootleg-4b, GR_Seroen-4b, GR_Tolly-4b
 GR_Jevmen-1a : GR_tapok-1a, GR_Stoatykins-1a
 GR_Jevmen-2a : GR_WEX-2a
 GR_Isbjorn52-3a : GR_lkelly-3a, GR_Nekovo-3a
-GR_FFL-3a : GR_Inspectnerd-3a, GR_Nekovo-3a
+GR_FFL-3a : GR_Nekovo-3a, GR_Inspectnerd-3a
 GR_Millisec-4b : GR_tapok-4b, GR_QTPI-4b, GR_tyrix
 END ROOMS
 CREATURES

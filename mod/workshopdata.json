@@ -1,8 +1,8 @@
 {
   "Title": "Community Gallery Region 2024",
-  "Description": "A collection of 190 rooms (479 screens) submitted by 72 different people as part of the 2024 Leditor Month.\r\n\r\nThere are no region connections this time, but you play as a slugcat with many assists available to help you on your exploration, should you feel you need it. No rain cycle, no dying, just exploring. Use the map to see your exploration progress and unvisited rooms. You can fly the same way as Saint if absolutely necessary.\r\n\r\nGitHub: https://github.com/alduris/gallery2024\r\n\r\nIf you are the creator of a room and you would like me to update the displayed name in the credit, contact @alduris on Discord.\r\n\r\nJoin the Rain World Modding Discord server: https://discord.gg/XaFKxegG6R",
+  "Description": "A collection of 190 rooms (477 screens) submitted by 72 different people as part of the 2024 Leditor Month.\r\n\r\nThere are no region connections this time, but you play as a slugcat with many assists available to help you on your exploration, should you feel you need it. No rain cycle, no dying, just exploring. Use the map to see your exploration progress and unvisited rooms. You can fly the same way as Saint if absolutely necessary.\r\n\r\nGitHub: https://github.com/alduris/gallery2024\r\n\r\nIf you are the creator of a room and you would like me to update the displayed name in the credit, contact @alduris on Discord.\r\n\r\nJoin the Rain World Modding Discord server: https://discord.gg/XaFKxegG6R",
   "ID": "Community.Gallery2",
-  "Version": "1.0",
+  "Version": "1.0.2",
   "TargetGameVersion": "v1.9.15b",
   "Requirements": "moreslugcats,regionkit,crs,slime-cubed.slugbase",
   "RequirementNames": "More Slugcats Expansion,RegionKit,Custom Regions Support,SlugBase",
