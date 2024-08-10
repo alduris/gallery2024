@@ -1,0 +1,20 @@
+{
+  "Title": "Community Gallery Region 2024",
+  "Description": "A collection of 190 rooms (479 screens) submitted by 72 different people as part of the 2024 Leditor Month.\r\n\r\nThere are no region connections this time, but you play as a slugcat with many assists available to help you on your exploration, should you feel you need it. No rain cycle, no dying, just exploring. Use the map to see your exploration progress and unvisited rooms. You can fly the same way as Saint if absolutely necessary.\r\n\r\nGitHub: https://github.com/alduris/gallery2024\r\n\r\nIf you are the creator of a room and you would like me to update the displayed name in the credit, contact @alduris on Discord.\r\n\r\nJoin the Rain World Modding Discord server: https://discord.gg/XaFKxegG6R",
+  "ID": "Community.Gallery2",
+  "Version": "1.0",
+  "TargetGameVersion": "v1.9.15b",
+  "Requirements": "moreslugcats,regionkit,crs,slime-cubed.slugbase",
+  "RequirementNames": "More Slugcats Expansion,RegionKit,Custom Regions Support,SlugBase",
+  "Authors": "HOSTED BY THE RAIN WORLD MODDING COMMUNITY \r\n\r\nOrganized by Nautillo \r\n\r\nRegion assembled by Alduris, Bro748, and Jevmen \r\n\r\nCode by Alduris and Isbjorn52 \r\n\r\nArt and slugcat design by Beep \r\n\r\nROOM CONTRIBUTIONS:\r\n0rchid\r\nAddy\r\nAlduris\r\nAlekus\r\nAlexAvailable\r\nAtom\r\nAx3lotI\r\nBemo\r\nBismuth\r\nBootleg\r\nbrownie\r\nCatatu\r\nChipped\r\ncoolkid\r\nDedniko\r\nDeerstop\r\nDetrax\r\nDodo Decalogist\r\nDogcat\r\nFatal\r\nFive Frozen Lakes\r\nIncogniko\r\nInspectnerd\r\nIsbjorn52\r\nIswto\r\nizuna\r\nJevmen\r\nKalush\r\nklum\r\nKing Of Fire\r\nlkelly\r\nmayhemmm\r\nmeta\r\nMillisec\r\nMojosoup\r\nMold223\r\nNekovo\r\nnopuddles\r\nNora\r\nTheNotGoodGamer\r\nOcto\r\nOscarriaq\r\nOvidia\r\nparageist\r\nqt-pi (chloe)\r\nquivel\r\nRbor\r\nren\r\nRex_Necro_Machina\r\nRose\r\nSeroen\r\nsnoodle\r\nSpiko\r\nStarlightReactor\r\nStoatykins\r\nTaGRa\r\ntapok\r\nTat\r\nTcan\r\nTheCubifyer\r\nTollyCastle\r\nTolly\r\nTronsx\r\nTyrix\r\nvprchm\r\nWex\r\nWorldspire\r\nWrayk\r\nWynne\r\nYippeeChan\r\nyofish\r\nZarquon",
+  "Visibility": "Public",
+  "Tags": [
+    "Regions",
+    "Campaigns",
+    "Game Modes",
+    "Custom Slugcat"
+  ],
+  "WorkshopID": 3305713194,
+  "UploadFilesOnly": false,
+  "UploadThumbnail": false
+}
