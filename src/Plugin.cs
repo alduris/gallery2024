@@ -66,6 +66,7 @@ sealed class Plugin : BaseUnityPlugin
             On.Menu.SlugcatSelectMenu.UpdateStartButtonText += StartButtonRenameHook;
             On.Menu.SlugcatSelectMenu.StartGame += RestartGameHook;
 			_ = new ILHook(typeof(HUD.Map).GetProperty(nameof(HUD.Map.discoverTexture)).GetSetMethod(), MapDiscoverTextureMemLeakFixQuestionMarkHook);
+            On.AboveCloudsView.ctor += AboveCloudsView_ctor;
 			
 			// Map stuff
 			LoadShaders(self);
@@ -93,6 +94,19 @@ sealed class Plugin : BaseUnityPlugin
 		OI = new Options();
 		MachineConnector.SetRegisteredOI(MOD_ID, OI);
 	}
+
+    private void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
+    {
+		orig(self, room, effect);
+		if (room.world.region != null && room.world.region.name == "GR")
+		{
+            float height = 10000f - effect.amount * 30000f;
+            self.sceneOrigo = new Vector2(2514f, height);
+            self.startAltitude = height - 5500f;
+            self.endAltitude = height + 5500f;
+            self.SIClouds = false;
+        }
+    }
 
     private void RestartGameHook(On.Menu.SlugcatSelectMenu.orig_StartGame orig, Menu.SlugcatSelectMenu self, SlugcatStats.Name storyGameCharacter)
     {
