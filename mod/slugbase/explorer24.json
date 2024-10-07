@@ -3,12 +3,12 @@
 	"name": "Community Gallery Region 2024",
 	"description": "A collection of rooms submitted as part of the 2024 Leditor Month hosted by Nautillo.<LINE>You are equipped with many tools to assist you on your gallery room safari.",
 	"features": {
-		"color": "c6c6c6",
+		"color": "e8a240",
 		"custom_colors": [
 			{ "name": "Body", "story": "c6c6c6" },
 			{ "name": "Eyes", "story": "010101" },
 			{ "name": "Mud",  "story": "754848" },
-			{ "name": "Vest", "story": "e8a240" }
+			{ "name": "Vest", "story": "e8a240", "jolly": ["e8a240", "a2e840", "e840a2", "a240e8"] }
 		],
 		"weight": 1.12,
 		"tunnel_speed": 1.2,

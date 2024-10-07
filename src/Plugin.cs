@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Permissions;
+using System.Text.RegularExpressions;
 using BepInEx;
 using BepInEx.Logging;
 using Gallery2024.Graphics;
@@ -19,7 +20,7 @@ using Random = UnityEngine.Random;
 
 namespace Gallery2024;
 
-[BepInPlugin(MOD_ID, "Community Gallery Region 2024", "1.0")]
+[BepInPlugin(MOD_ID, "Community Gallery Region 2024", "1.1")]
 sealed class Plugin : BaseUnityPlugin
 {
 	public const string MOD_ID = "Community.Gallery2";
@@ -67,6 +68,11 @@ sealed class Plugin : BaseUnityPlugin
             On.Menu.SlugcatSelectMenu.StartGame += RestartGameHook;
 			_ = new ILHook(typeof(HUD.Map).GetProperty(nameof(HUD.Map.discoverTexture)).GetSetMethod(), MapDiscoverTextureMemLeakFixQuestionMarkHook);
             On.AboveCloudsView.ctor += AboveCloudsView_ctor;
+            On.OverWorld.GateRequestsSwitchInitiation += NoGateConnectionsToGRHook;
+
+            // Force Jolly Coop to stay on Leo
+            On.JollyCoop.JollyMenu.JollySlidingMenu.Singal += DontSwitchLeoHook;
+            On.Player.GetInitialSlugcatClass += DontSwitchLeoHook2;
 			
 			// Map stuff
 			LoadShaders(self);
@@ -94,6 +100,64 @@ sealed class Plugin : BaseUnityPlugin
 		OI = new Options();
 		MachineConnector.SetRegisteredOI(MOD_ID, OI);
 	}
+
+    private void DontSwitchLeoHook2(On.Player.orig_GetInitialSlugcatClass orig, Player self)
+    {
+		if (ModManager.CoopAvailable && self.abstractCreature.world.game.GetStorySession?.saveState.saveStateNumber == Slugcat && !self.isNPC)
+		{
+			self.SlugCatClass = Slugcat;
+			return;
+		}
+		orig(self);
+    }
+
+    private void DontSwitchLeoHook(On.JollyCoop.JollyMenu.JollySlidingMenu.orig_Singal orig, JollyCoop.JollyMenu.JollySlidingMenu self, Menu.MenuObject sender, string message)
+    {
+        orig(self, sender, message);
+		if (self.menu.currentSlugcatPageName == Slugcat && message.Contains("CLASSCHANGE"))
+		{
+            int i = 0;
+            while (i < self.playerSelector.Length)
+            {
+                if (message == "CLASSCHANGE" + i.ToString())
+                {
+                    SlugcatStats.Name name = Slugcat;
+                    self.JollyOptions(i).playerClass = name;
+                    self.menu.PlaySound(SoundID.MENU_Error_Ping);
+					self.playerSelector[i].dirty = true;
+                    self.SetPortraitsDirty();
+                    return;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+        }
+    }
+
+    private void NoGateConnectionsToGRHook(On.OverWorld.orig_GateRequestsSwitchInitiation orig, OverWorld self, RegionGate reportBackToGate)
+    {
+        string oldRegion = self.activeWorld.name;
+        oldRegion = Region.GetVanillaEquivalentRegionAcronym(oldRegion);
+        string[] split = Regex.Split(reportBackToGate.room.abstractRoom.name, "_");
+        string newRegion = "ERROR!";
+        if (split.Length == 3)
+        {
+            for (int i = 1; i < 3; i++)
+            {
+                if (split[i] != oldRegion)
+                {
+                    newRegion = split[i];
+                    break;
+                }
+            }
+        }
+        newRegion = Region.GetProperRegionAcronym(self.game.IsStorySession ? self.game.StoryCharacter : null, newRegion);
+		if (oldRegion == "GR" || newRegion == "GR") Application.Quit(); // explode :3
+
+        orig(self, reportBackToGate);
+    }
 
     private void AboveCloudsView_ctor(On.AboveCloudsView.orig_ctor orig, AboveCloudsView self, Room room, RoomSettings.RoomEffect effect)
     {
