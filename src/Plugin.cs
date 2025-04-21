@@ -81,10 +81,6 @@ sealed class Plugin : BaseUnityPlugin
             On.HUD.Map.ctor += CreateMapMarkers;
             On.HUD.Map.FadeInMarker.SetInvisible += FadeInMarker_SetInvisible;
             On.HUD.Map.ResetNotRevealedMarkers += Map_ResetNotRevealedMarkers;
-			
-			// L4 fix stolen from mergefix
-			On.RoomCamera.MoveCamera2 += RoomCamera_MoveCamera2;
-			On.RoomCamera.MoveCamera_Room_int += RoomCamera_MoveCamera_Room_int;
 
 			// Player graphics stuff
 			ExplorerGraphics.LoadAtlases();
@@ -153,7 +149,7 @@ sealed class Plugin : BaseUnityPlugin
                 }
             }
         }
-        newRegion = Region.GetProperRegionAcronym(self.game.IsStorySession ? self.game.StoryCharacter : null, newRegion);
+        newRegion = Region.GetProperRegionAcronym(self.game.IsStorySession ? self.game.TimelinePoint : null, newRegion);
 		if (oldRegion == "GR" || newRegion == "GR") Application.Quit(); // explode :3
 
         orig(self, reportBackToGate);
@@ -232,20 +228,6 @@ sealed class Plugin : BaseUnityPlugin
 		AssetBundle assetBundle = AssetBundle.LoadFromFile(AssetManager.ResolveFilePath("assets/mapshader"));
 		rainWorld.Shaders["VisibleMap"] = FShader.CreateShader("VisibleMap", assetBundle.LoadAsset<Shader>("Assets/VisibleMap.shader"));
 	}
-
-	private static void RoomCamera_MoveCamera_Room_int(On.RoomCamera.orig_MoveCamera_Room_int orig, RoomCamera self, Room newRoom, int camPos)
-    {
-        orig(self, newRoom, camPos);
-        if (!System.IO.File.Exists(WorldLoader.FindRoomFile(newRoom.abstractRoom.name, false, "_" + (camPos + 1).ToString() + "_bkg.png")))
-        { self.preLoadedBKG = null; }
-    }
-
-    private static void RoomCamera_MoveCamera2(On.RoomCamera.orig_MoveCamera2 orig, RoomCamera self, string roomName, int camPos)
-    {
-        orig(self, roomName, camPos);
-        if (!System.IO.File.Exists(WorldLoader.FindRoomFile(roomName, false, "_" + (camPos + 1).ToString() + "_bkg.png")))
-        { self.preLoadedBKG = null; }
-    }
 	
 	private void GRMapShaderHook(On.HUD.Map.orig_Update orig, HUD.Map self)
 	{
@@ -456,7 +438,7 @@ sealed class Plugin : BaseUnityPlugin
 			}
 
 			// Funny flight mode
-			if (self.wantToJump > 0 && self.canJump <= 0 && self.input[0].pckp && self.input[1].pckp)
+			if ((self.wantToJump > 0 && self.canJump <= 0 && self.input[0].pckp && self.input[1].pckp) || (self.input[0].spec && !self.input[1].spec))
 			{
 				self.monkAscension = OI.AllowFlight.Value && !self.monkAscension;
 				self.wantToJump = 0;

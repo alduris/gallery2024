@@ -157,7 +157,8 @@ namespace Gallery2024
                     Vector2.Lerp(player.bodyChunks[0].lastPos, player.bodyChunks[0].pos, timeStacker)
                     + Vector2.Lerp(player.bodyChunks[1].lastPos, player.bodyChunks[1].pos, timeStacker)
                 ) / 2f
-                - camPos;
+                - camPos
+                + new Vector2(0.001f, 0.001f);
             for (int i = 0; i < sLeaser.sprites.Length; i++)
             {
                 var offset = Vector2.zero; // Vector2.one * sLeaser.sprites[i].element.sourcePixelSize * sLeaser.sprites[i].scale;
